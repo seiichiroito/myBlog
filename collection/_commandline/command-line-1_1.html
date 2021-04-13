@@ -1,0 +1,67 @@
+---
+layout: tutorial
+category: commandline
+title:  "1.1 序文"
+section: "章 1"
+origin: "https://www.learnenough.com/command-line-tutorial/basics#sec-introduction"
+---
+<div class="mainTC">
+    <p>
+        作家<a href="https://en.wikipedia.org/wiki/Neal_Stephenson">Neal Stephenson</a>の有名な言葉に<a href="https://en.wikipedia.org/wiki/In_the_Beginning..._Was_the_Command_Line">こんなもの</a>がある
+    </p>
+    <p>
+        「最初は... コマンドラインだった。」
+    </p>
+    <p>
+        グラフィカルユーザインターフェース(GUI)はコンピュータの使い方を劇的に簡単にしうるが、多くの場合に置いて一番強力で柔軟にコンピュータと対話できるのはコマンドラインインターフェース(CLI)である。そのようなインターフェースで、<a href="https://tron.fandom.com/wiki/User">ユーザー</a>はコマンドを打つことで望んだ仕事をコンピュータに指示することができる。コマンドは様々な結果を達成するために様々な形で組み合わせられる。典型的なコマンドラインのコマンドの例が<a href="#figure-1_2">図1.2</a>である。
+
+    </p>
+    {% include component/figure.html num=2 %}
+    <p>
+        このチュートリアルはUnixコマンドラインの基礎をカバーしている。UnixとはLinux, Android, iOS（iPhoneとiPad)、そしてmacOSを含んだ<a href="https://en.wikipedia.org/wiki/Unix">オペレーションシステム</a>の一種を指している。UnixシステムはほとんどのWorld Wide Web上のソフトウェアに使われ、ほとんどの携帯、タブレットを動かし、世界の多くのデスクトップコンピュータにも搭載されている。近代のコンピューティングにおいてUnixが中心的な役割を担っているため、このチュートリアルはUnixによるソフトウェア開発をカバーしている。
+    </p>
+
+    <p>
+        Unix黄金時代における主な例外としてMicrosoft Windowsがあり、WindowsはUnixを使っていない。しかし、ほとんどWindowsの開発ツールを使って開発を行う人にとってもUnixコマンドラインを学ぶことによって得られる恩恵があるだろう。とりわけ、ある時点でそのようなデベロッパーはUnixサーバーでコマンドラインを使うことがあり（例えば”セキュアシェル”コマンドとして<span class="mainTC__code mainTC__code--emphasized">ssh</span>を介して)、そういった状況ではUnixコマンドに慣れていることは不可欠である。そのため、Windowsユーザーは仮想マシンをインストールするか（<a href="#aside-virtual_machine">Box1.2</a>）、<a href="https://www.learnenough.com/dev-environment-tutorial"><span class="italic">Enough Dev Environment to Be Dangerous</span></a>のWindowsユーザー向けの手順に従ってLinux互換の開発環境をセットアップすることをお勧めする。
+    </p>
+    <p>
+        もう一つの選択肢として、コマンドラインを内蔵している、Cloud IDEを使うことである。この選択肢も<a href="https://www.learnenough.com/dev-environment-tutorial">*Learn Enough Dev Environment to Be Dangerous*</a>にて<a href="https://www.learnenough.com/dev-environment-tutorial#sec-cloud_ide">カバー</a>されている。
+    </p>
+    <div id="aside-virtual_machine" class="mainTC__box u-mtbm">
+        <h1 class="mainTC__box--title">Box 1.2. 仮想マシンを動かす</h1>
+        <p>
+            Windowsユーザーの一つの選択肢はWindowsでLinuxのオペレーションシステムを使えるようになる仮想マシン(VM)を動かす無料のプログラムをインストールすることである。Windowsはここ数年、Linuxのサポートを改善させてきたので、仮想マシンを動かすために、<a href="https://www.learnenough.com/dev-environment-tutorial">Learn Enough Dev Environment to Be Dangerous</a>の<a href="https://www.learnenough.com/dev-environment-tutorial#sec-windows">Windowsユーザー向けの手順</a>をまず初めに試すことをお勧めする。
+        </p>
+        <p>
+            Note：この手順はかなり手際を要する可能性があり、またあいにく仮想マシン上のそれぞれの技術的なサポートを提供するような資料は持っていない。もし何か問題が起こったら、代わりに<a href="https://www.learnenough.com/dev-environment-tutorial#sec-cloud_ide">Cloud IDE</a>を使うことをお勧めする。
+        </p>
+        <p>
+            仮想マシンをインストールする手順は以下のとおりである。
+        </p>
+        <p>
+            1. pcのシステムにあった正しい<a href="https://www.virtualbox.org/">VirtualBox</a>をインストールする(無料)
+        </p>
+        <p>
+            2. 「<a href="https://softcover-static.s3.amazonaws.com/LearnEnough-v.1.4.ova">Learn Enough Virtual Machine</a>」をダウンロードする
+        </p>
+        <p>
+            3. ダウンロードが完了したら、”OVA”ファイルをダブルクリックし、仮想マシン（VS）を表示されている手順に沿い、インストールする。
+        </p>
+        <p>
+            4. 仮想マシンをダブルクリックし、デフォルトのユーザーパスワード、”foobar!”でログインする。
+        </p>
+        <p>
+            (これらのステップを全て済ませるのは、章1.4で開発し始めてから使う技術的素養を鍛える良い演習である。)手順を終えると<a href="#figure-1_3">図1.3</a>のように、このチュートリアルのために事前に設定された、Linuxのデスクトップ環境が表示される（コマンドラインのターミナルを含む）。
+        </p>
+        <p>
+            長い目で見て、pcをMacにできるだけ早く変えることをお勧めする。Macは一般的にWindowsより高いので、少し節約しなければならないかもしれないが、多くの場合において、生産性が向上することによってその値段の違いは埋め合わせられるだろう。（もしLinuxが好きでそれを使い続けたいと感じたとしても、Macは一般的にユーザーインターフェイスが優れており、扱いやすく、またMac上でも仮想マシン内でいつでもLinuxを動かすことができる。)
+        </p>
+    </div>
+    {% include component/figure.html num=3 %}
+</div>
+
+
+
+
+
+

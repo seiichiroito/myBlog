@@ -1,0 +1,30 @@
+---
+layout: default
+title: About
+description: "自己紹介"
+---
+
+<div class="about container-tb">
+    <div class="wrap container-lr">
+        {% include component/breadcrumbs.html %}
+        <div class="about__content">
+            <h1 class="about__content--title">自己紹介</h1>
+            <div class="about__introduce">
+                <img src="/assets/images/general/me.jpg" alt="Seiichiro">
+                <div class="about__introduce--content">
+                  <h2 class="about__introduce--title">伊藤　誠一郎</h2>
+                  <p class="about__introduce--exp">写真の人の方。TECH::CAMPでメンターとして働く。英語が少しできる。</p>
+                  <p class="about__introduce--exp">連絡は<a class="c-nav-link" href="/form.html">こちら</a>か下記のSNSにて。</p>
+                  <div class="about__introduce--exp">
+                    <a class="about__introduce--sns" href="https://twitter.com/{{ site.twitter_username }}">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="about__introduce--sns" href="https://github.com/{{ site.github_username }}">
+                      <i class="fab fa-github"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+.breadcrumbs {
+    a {
+        color: #627b7c;
+        text-decoration: none;
+        text-decoration-thickness: 0.13em;
+        &:hover, &:active {
+            text-decoration: underline;
+            color: #405152;
+        }
+    }
+}

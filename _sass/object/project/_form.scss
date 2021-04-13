@@ -1,0 +1,11 @@
+.form {
+    .wrap {
+        flex-direction: column;
+    }
+    &__content {
+        margin-top: 30px;
+        iframe {
+            width: 100%;
+        }
+    }
+}

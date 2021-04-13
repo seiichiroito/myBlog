@@ -1,0 +1,10 @@
+<a href="{{ post.url }}" class="post-display">
+    <div class="post-display__header">
+        <h1 class="post-display__header--title">{{ post.title }}</h1>
+        <p class="post-display__header--date u-mts">{{ post.date | date: '%B, %d, %Y' }}</p>
+    </div>
+    <div class="post-display__image u-mtbs" style="background-image: url({{ post.heroImage }});"></div>
+    <div class="post-display__content">
+        {{ post.excerpt | strip_html | strip_newlines | truncate: 60 }}
+    </div>
+</a>

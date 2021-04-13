@@ -1,0 +1,50 @@
+.post {
+    .wrap {
+        flex-direction: column;
+    }
+    &__hero {
+        background-size: cover;
+        background-position: center;
+        height: 30vh;
+    }
+    &__main {
+        margin-top: 30px;
+        padding: 0 50px;
+    }
+    &__header {
+        margin: 20px 0;
+        &--title {
+            text-align: center;
+            font-size: 1.8em;
+        }
+        &--date {
+            color: #333;
+        }
+    }
+    &__content {
+        margin-bottom: 100px;
+        p {
+            line-height: 2;
+            ~ p {
+                margin-top: 20px;
+            }
+            &:before {
+                content: "　";
+            }
+        }
+        img {
+            width: 80%;
+            margin: 20px auto;
+            display: block;
+          }
+    }
+}
+
+
+@media (max-width: 48em) {
+    .post {
+        &__main {
+            padding: 0;
+        }
+    }
+}

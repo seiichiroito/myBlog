@@ -1,0 +1,88 @@
+---
+layout: tutorial
+category: commandline
+title: "2.1 転送と追加"
+section: "章 2"
+origin: "https://www.learnenough.com/command-line-tutorial/manipulating_files#sec-redirecting_and_appending"
+---
+<div class="mainTC">
+    <p>
+        <a href="/course/learnenough/command-line-1_0">章1</a>で中断していた、シェイクスピアの一つ目のソネットの最初の行を出力する<span class="mainTC__code mainTC__code--emphasized">echo</span>からはじめよう。（<a href="/course/learnenough/command-line-1_5#listing-1_7">リスト1.7</a>）
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span><span class="mainTC__code--emphasized">echo</span> "From fairest creatures we desire increase,"</p>
+        <p>From fairest creatures we desire increase,</p>
+    </div>
+    <p>
+        今回のタスクはこの行を含んだファイルを作成することだ。テキスト•エディタの力を借りずとも、リダイレクト(転送)オペレータ<span class="mainTC__code mainTC__code--emphasized">></span>を使うことで可能である。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">echo</span>  "From fairest creatures we desire increase," <span class="mainTC__code--space">></span> sonnet_1.txt</p>
+    </div>
+    <p>
+        （ゼロから入力しなくても上矢印で以前のコマンドを繰り返し実行できることを思い出してほしい。）
+        ここでは右かぎかっこ<span class="mainTC__code mainTC__code--emphasized">></span>は<span class="mainTC__code mainTC__code--emphasized">echo</span>で出力された文字列を受け取り、<span class="mainTC__code mainTC__code--emphasized">sonnet_1.txx</span>というファイルにその中身を転送（リダイレクト）している。
+    </p>
+    <p>
+        どうやって転送が上手くいっているかわかるのだろうか？ファイルの中身を調べる、より発展的なコマンドラインのツールを章3で学ぶが、とりあえず今は単にスクリーンに中身を出力してくれる、<span class="mainTC__code mainTC__code--emphasized">cat</span>コマンドを使おう。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span><span class="mainTC__code--emphasized">cat</span> sonnet_1.txt</p>
+        <p>From fairest creatures we desire increase,</p>
+    </div>
+    <p>
+        <span class="mainTC__code mainTC__code--emphasized">cat</span>は"concatenate(連結)"の省略形であり、そこから予想できる通り複数のファイルの中身をくっつけるのにも使われるが、上での用途（スクリーンに一つのファイルの中身を出力すること）の方がよく使われる。
+        <span class="mainTC__code mainTC__code--emphasized">cat</span>は特定のファイルの中身を見るのに"早く、汚い"方法と考えれば良い。(<a class="#figure-2_2">図2.2</a>)
+    </p>
+    {% include component/figure.html num=13 %}
+    <p>
+        ソネット（現代バージョン）の二行目を追加するためには、アペンド(追加)オペレータ<span class="mainTC__code mainTC__code--emphasized">>></span>をこのように使えば良い。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">echo</span>  "That thereby beauty's Rose might never die," <span class="mainTC__code--space">>></span> sonnet_1.txt</p>
+        <p>From fairest creatures we desire increase,</p>
+        <p>That thereby beauty's Rose might never die,</p>
+    </div>
+    <p>
+        （このコマンドを実行するのに、あなたが再入力せずに上矢印を二度打っただけであったと願う。もしそうなら、これを使うのに確実に慣れてきている。）
+        上の結果が示す通り、二重の右かぎかっこ<span class="mainTC__code mainTC__code--emphasized">>></span>は予想通り<span class="mainTC__code mainTC__code--emphasized">echo</span>から受け取った文字列をファイル<span class="mainTC__code mainTC__code--emphasized">sonnet_1.txt</span>に追加している。
+    </p>
+    <p>
+        現代版のソネットでは時にRoseをroseに修正しているので（そのため<a href="https://en.wikipedia.org/wiki/Tudor_rose">意味</a>を曖昧にしている）、以下のように二つの<span class="mainTC__code mainTC__code--emphasized">echo</span>を呼び出すことで二つ目のファイルを作ることができる。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">echo</span> "From fairest creatures we desire increase," <span class="mainTC__code--space">></span> sonnet_1_lower_case.txt</p>
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">echo</span> "That thereby beauty's rose might never die," <span class="mainTC__code--space">>></span> sonnet_1_lower_case.txtt</p>
+    </div>
+    <p>
+        似ているが、同じではないファイルの中身を比較しやすくするために、Unixシステムは<span class="mainTC__code mainTC__code--emphasized">diff</span>という便利なコマンドを提供している。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">diff</span> sonnet_1.txt sonnet_1_lower_case.txt</p>
+        <p>< That thereby beauty's Rose might never die,</p>
+        <p>---</p>
+        <p>> That thereby beauty's rose might never die,</p>
+    </div>
+    <p>
+        ファイルについて話す時、<span class="italic">diff</span>は名詞としても（「それらのファイルのdiff(違い)はなんだろう?」）、動詞としても（「何が変わったか見るためにdiff(違いを見比べる)すべきだ」）使われる。
+        多くの専門用語と同様に、"現在のアイデアを過去の様々な文化と見比べて(diff)、何を得たかを見てみよう"などと一般的に使われることもある。
+    </p>
+    <h1 id="exercise-2_1" class="sub-title"><span class="italic">2.1.1 演習</span></h1>
+    <p>
+        それぞれの演習の最後で<span class="mainTC__code mainTC__code--emphasized">cat</span>を使って答えがあっているか確かめるように。
+    </p>
+    <p>
+        1. <span class="mainTC__code mainTC__code--emphasized">echo</span>と<span class="mainTC__code mainTC__code--emphasized">></span>を使って、ソネットの最初の行と二つ目の行を
+        <span class="mainTC__code mainTC__code--emphasized">line_1.txt</span>と<span class="mainTC__code mainTC__code--emphasized">line_2.txt</span>とに分けてそれぞれに出力しなさい。
+    </p>
+    <p>
+        2. <span class="mainTC__code mainTC__code--emphasized">line_1.txt</span>の中身を転送し、<span class="mainTC__code mainTC__code--emphasized">line_2.txt</span>の中身を追加することで<span class="mainTC__code mainTC__code--emphasized">sonnet_1.txt</span>（ソネットの最初の2行を含んでいる）の複製を作りなさい。
+        新しいファイルを<span class="mainTC__code mainTC__code--emphasized">sonnnet_1_copy.txt</span>にし、<span class="mainTC__code mainTC__code--emphasized">diff</span>を使うことで<span class="mainTC__code mainTC__code--emphasized">sonnet_1.txt</span>の中身と同じであることを確認しなさい。
+        ヒント: 二つのファイルに違いがない時、<span class="mainTC__code mainTC__code--emphasized">diff</span>は何も出力しない。
+    </p>
+    <p>
+        3. <span class="mainTC__code mainTC__code--emphasized">cat</span>を使うことで、<span class="mainTC__code mainTC__code--emphasized">line_1.txt</span>と<span class="mainTC__code mainTC__code--emphasized">line_2.txt</span>の中身を、行の順番を逆にした状態で統合させ、
+        その内容を<span class="mainTC__code mainTC__code--emphasized">sonnet_1_reversed.txt</span>に出力しなさい。
+        ヒント: <span class="mainTC__code mainTC__code--emphasized">cat</span>は二つの引数をとることができる。
+    </p>
+</div>

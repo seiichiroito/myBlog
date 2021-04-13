@@ -1,0 +1,110 @@
+---
+layout: tutorial
+category: commandline
+title:  "1.2 ターミナルを実行する"
+section: "章 1"
+origin: "https://www.learnenough.com/command-line-tutorial/basics#sec-running_a_terminal"
+---
+
+<div class="mainTC">
+    <p>
+        コマンドラインのコマンドを実行するのに、まず初めにコマンドラインを使えるターミナルを始めなければならない。正確な詳細については使っているオペレーションシステムによって異なる。
+    </p>
+    <h1 class="sub-title"><span class="italic">macOS</span></h1>
+    <p>
+        macOSでは、⌘␣（コマンド-スペース）か画面の右上にある虫眼鏡のマークをクリックすることで開ける<a href="https://support.apple.com/en-us/HT204014">Spotlight</a>を使うことでターミナルのウィンドウを開くことができる。一旦Spotlightを立ち上げたら、Spotlightの検索バーに”terminal”と打ち込むことでターミナルを始めることができる。(もしより高度で、カスタマイズ可能なターミナルに興味があったら<a href="https://www.iterm2.com/">iTerm</a>を使うことをお勧めするが、任意である。)
+    </p>
+    <p>
+        この時、<a href="#listing-1_1">リスト1.1</a>のような警告が現れるかもしれない。
+    </p>
+
+    <div id="listing-1_1" class="mainTC__code mainTC__code--block u-mtbm">
+        <p class="mainTC__code--dark-bg mainTC__code--title">リスト1.1: マック上でのターミナルの警告</p>
+        <div class="mainTC__code--emphasized">
+            <p>The default interactive shell is now zsh.</p>
+            <p>To update your account to use zsh, please run 'chsh -s /bin/zsh'.</p>
+            <p>For more details, please visit https://support.apple.com/kb/HT208050.</p>
+        </div>
+        <p><span class="mainTC__code--prompt">[~]$</span></p>
+    </div>
+
+    <p>
+        この警告は<a href="https://en.wikipedia.org/wiki/MacOS_Catalina">macOS Catalina</a>で変更された結果によるものである。これに対して現状何かをする必要はない。この警告に関連しては、このチュートリアルにおいて違いが出るときに改めて言及する。詳細については、Learn Enough内のブログ、<a href="https://news.learnenough.com/macos-bash-zshell">”Using Z Shell on Macs with the Learn Enough Tutorials”</a>を参照。
+    </p>
+    <h1 class="sub-title"><span class="italic">Linux</span></h1>
+    <p>
+        Linuxでは、<a href="/course/learnenough/command-line-1_1#figure-1_3">図1.3</a>で表示されているようにターミナルアイコンをクリックすることでターミナルを始められる。正確な詳細はシステムによって異なる可能性があるが、結果として<a href="#figure-1_4">図1.4</a>のようなものが表示されるはずである。
+    </p>
+
+    <h1 class="sub-title"><span class="italic">Windows</span></h1>
+    <p>
+        Windowsでは、Linux（驚くべきことに、MicrosoftはネイティブにLinuxをサポートすることを決めた）をインストールをお勧めする。詳しくは無料の<a href="https://www.learnenough.com/dev-environment-tutorial">*Learn Enough Dev Environment to Be Dangerous*</a>の<a href="https://www.learnenough.com/dev-environment-tutorial/dev_environment#sec-windows">Windowsの節</a>にて説明してある。一旦Linuxをインストールしたら、上のLinuxで説明してあるとおり、ターミナルのアイコンが表示されるはずである。もし行き詰まったら、技術的素養を駆使して解決するように。
+    </p>
+
+    <h1 class="sub-title"><span class="italic">Terminal window</span></h1>
+    <p>
+        どのオペレーションシステムを使っているにかかわらず、詳細は異なるかもしれないが、ターミナルウィンドウが<a href="#figure-1_4">図1.4</a>のように表示されるはずである。
+    </p>
+    {% include component/figure.html num=4 %}
+    <p>
+        <a href="course/learnenough/command-line-1_1#figure-1_2">図1.2</a>で見た例はコマンドラインにおける典型的な要素の全てを含んでおり、[図1.5](#figure-1_5)のようになっている。プロンプト（ユーザーに何かをさせるよう、”鼓舞(prompt)”する）、そのあと続いて、コマンド（”コンピューターに命令(command)を与える”の意）、オプション（”異なる選択肢(option)から選ぶ”の意）、そして引数（数学の<a href="https://en.wikipedia.org/wiki/Argument_of_a_function">”関数の引数(argument)”</a>と同様）となる。プロンプトはターミナルによって自動的に出力されることを理解することが不可欠であり、打ち込むことはない。（実際に打ち込んだとしても、エラーが起こるだけだろう。）そのうえ、実際のプロンプトの詳細は異なることがあるが、このチュートリアルにおいてその違いが重要になることはない（<a href="#aside-prompt)">Box1.3</a>）。
+    </p>
+    {% include component/figure.html num=5 %}
+
+    <div id="aside-prompt" class="mainTC__box u-mtbm">
+        <h1 class="mainTC__box--title">Box1.3. プロンプトとは？</h1>
+        <p>
+            コマンドラインはユーザーにアクションを起こしてもらうために、毎回いくつかのシンボルか”鼓舞(prompt)”させるデザインのシンボルで始まる。プロンプトは一般的にドルサイン`$`か`%`、そしてその前にシステムによって変化する情報が付く。
+        </p>
+        <p>
+            例えば、あるシステムではこのプロントはこのような表示になる。
+        </p>
+        <div class="mainTC__code mainTC__code--block">
+            <p class="mainTC__code--dark-bg">Michael's MacBook Air:~ mhartl$</p>
+        </div>
+        <p>
+            <a href="#figure-1_4">図1.</a>では、プロンプトは代わりにこのような表示だった。
+        </p>
+        <div class="mainTC__code mainTC__code--block">
+            <p class="mainTC__code--dark-bg">[~]$</p>
+        </div>
+        <p>
+            また、<a href="#figure-1_5">図1.5</a>ではこのようだった。
+        </p>
+        <div class="mainTC__code mainTC__code--block">
+            <p class="mainTC__code--dark-bg">[project]$</p>
+        </div>
+        <p>
+            最後に、私が今見ているプロンプトはこのような表示である。
+        </p>
+        <div class="mainTC__code mainTC__code--block">
+            <p class="mainTC__code--dark-bg">[learn_enough_command_line (master)]$</p>
+        </div>
+        <p>
+            このチュートリアルの目的としては、プロンプトの詳細は大事ではないが、次のチュートリアル(<a href="https://www.learnenough.com/text-editor">*Learn Enough Text Editor to Be Dangerous*</a>)でプロンプトのカスタマイズの便利な方法について記載している。
+        </p>
+    </div>
+
+    <h1 class="sub-title"><span class="italic">1.2.1 演習</span></h1>
+    <p>
+        <span class="italic">Learn Enough Command Line to Be Dangerous</span>では多くの演習を含んでいる。次の章に進む前に演習に取り組む習慣をつけることを強くお勧めしている。それらはその章でやった内容を補完し、言及された多くのコマンドを使うことで、不可欠な実践を行うことができる。
+    </p>
+    <p>
+        概して、演習を済ませる必要はないので、もし詰まってしまったらそのまま先に進んであとでまたやり直すのもいいだろう。それにまた、本筋のためにも演習をするのは良い助けとなる。見たところ不可能なアイデアや手に負えないような問題でも２回目以降には簡単に見えることがしばしばあることに驚くだろう。
+    </p>
+    <p>
+        演習の解決方法はLearn Enoughでチュートリアルを購入することで<a href="http://www.learnenough.com/solutions">learnenough.com/solutions</a>にて見ることができる。他の人の答えを見て、自分の回答を記録するためには、<a href="http://learnenough.com/society">learnenough.com/society</a>で<a href="http://learnenough.com/society">Learn Enough Society</a>に参加する必要がある。
+    </p>
+    <p>
+        1. <a href="#figure-1_5">図1.5</a>で言及したように、<a href="#figure-1_6">図1.6</a>において、プロンプト、コマンド、オプション、引数、そしてカーソルがどれかを答えなさい。
+    </p>
+    <p>
+        2. 多くの現代のターミナルプログラムは複数のタブを作ることができる機能がついている(<a href="#figure-1_7">図1.7</a>)。これは関連する一連のターミナルウィンドウを管理するのに役立つ。ターミナルプログラムのメニューバー(<a href="#figure-1_8">図1.8</a>)を調べることで、どうやったら新しいタブを作ることかできるか見つけなさい。
+    </p>
+    <p>
+        追加事項：新しいタブを作るキーボードショットがどれかも見つけること。（システムのキーボードショートカットを学ぶことは、技術的素養を磨くのに素晴らしい習慣である。）
+    </p>
+    {% include component/figure.html num=6 %}
+    {% include component/figure.html num=7 %}
+    {% include component/figure.html num=8 %}
+</div>

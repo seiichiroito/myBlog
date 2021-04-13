@@ -1,0 +1,221 @@
+---
+layout: tutorial
+category: commandline
+title: "2.2 リスト"
+section: "章 2"
+origin: "https://www.learnenough.com/command-line-tutorial/manipulating_files#sec-listing"
+---
+<div class="mainTC">
+    <p>
+        おそらくUnixコマンドで最も使われるコマンドは<span class="mainTC__code mainTC__code--emphasized">ls</span>だろう。これは"list"の省略形である。（<a href="#listing-2_1">リスト2.1</a>）
+    </p>
+    <div id="listing-2_1" class="mainTC__code mainTC__code--block u-mtbm">
+        <p class="mainTC__code--dark-bg mainTC__code--title">リスト2.1: ファイルとディレクトリを<span class="mainTC__code--emphasized">ls</span>でリスト表示する。（結果は異なる可能性あり。）</p>
+        <p><span class="mainTC__code--prompt">$</span> ls</p>
+        <div class="mainTC__code--emphasized">
+            <p>Desktop</p>
+            <p>Downloads</p>
+            <p>sonnet_1.txt</p>
+            <p>sonnet_1_reversed.txt</p>
+        </div>
+    </div>
+    <p>
+        <span class="mainTC__code mainTC__code--emphasized">ls</span>コマンドは単に現在のディレクトリ内の全てのファイルとディレクトリを表示する。（<span class="italic">隠されている</span>ものは表示されない。これについてはこの後学ぶ。）
+    </p>
+    <p>
+        これは<a class="figure-2_3">図2.3</a>のような、ファイルとディレクトリ（"フォルダ"とも呼ばれる）を表示するためのグラフィカルブラウザーのコマンドラインバージョンと言える。
+        （ディレクトリとフォルダについては<a>章4</a>でより深く理解していく。）グラフィカルファイルブラウザーでは、<a href="#listing-2_1">リスト2.1</a>の結果はシンプルで、また結果はシステムの詳細によって異なる。
+        （これはこの後の<span class='mainTC__code mainTC__code--emphasized'>ls</span>の例全てで当てはまるので、多少出力が異なっても気にしないように。）
+    </p>
+    {% include component/figure.html num=14 %}
+    <p>
+        <span class='mainTC__code mainTC__code--emphasized'>ls</span>コマンドはあるファイル（もしくはディレクトリ）があるかどうかを確認するのにも使うことができる。
+        これは<a href="#listing-2_2">リスト2.2</a>のように、<span class='mainTC__code mainTC__code--emphasized'>ls</span>を存在しないファイルを表示させようとするとエラーメッセージが表示されるからだ。
+    </p>
+    <div id="listing-2_2" class="mainTC__code mainTC__code--block u-mtbm">
+        <p class="mainTC__code--dark-bg mainTC__code--title">リスト2.2: <span class="mainTC__code--emphasized">ls</span>を存在しないファイルに対して実行した時。</p>
+        <p><span class="mainTC__code--prompt">$</span> ls <span class="mainTC__code--space">foo</span></p>
+        <div class="mainTC__code--emphasized">
+            <p>ls: foo: No such file or directory</p>
+        </div>
+        <p><span class="mainTC__code--prompt">$</span> touch <span class="mainTC__code--space">foo</span></p>
+        <p><span class="mainTC__code--prompt">$</span> ls <span class="mainTC__code--space">foo</span></p>
+        <div class="mainTC__code--emphasized">
+            <p>foo</p>
+        </div>
+    </div>
+    <p>
+        <a href="#listing-2_2">リスト2.2</a>では<span class='mainTC__code mainTC__code--emphasized'>foo</span>という名前で空のファイルを作成するために<span class='mainTC__code mainTC__code--emphasized'>touch</span>コマンドを使ったため（<a href="#aside-foo-bar">Box2.2</a>）、２回目に<span class='mainTC__code mainTC__code--emphasized'>ls</span>を実行したときはエラーメッセージが消えている。
+        （本来<span clasbs='mainTC__code mainTC__code--emphasized'>touch</span>はファイルやディクショナリの変更時間をを変更するためのものだが、<a href="#listing-2_2">リスト2.2</a>のように空のファイルを作るために<span class='mainTC__code mainTC__code--emphasized'>touch</span>を使うのがUnixでの慣用となっている。）
+    </p>
+    <div id="aside-foo-bar" class="mainTC__box u-mtbm">
+        <h1 class="mainTC__box--title">Box2.2. Foo, bar, baz, など</h1>
+        <p>
+            コンピュータについての記事を読んでいる時、ある奇妙な言葉達に出会うことがあるだろう。fooやbar、bazといった言葉に、それもかなりの頻度で。
+            確かに、<span class='mainTC__code--dark-bg'>ls foo</span>や、<span class='mainTC__code--dark-bg'>touch foo</span>に加え、このチュートリアルで4度同じようなものを見てきた。
+        </p>
+        <p>
+            典型的なコマンドラインコマンド（<a href="/course/learnenough/command-line-1_1.html#figure-1_2">図1.2</a>）、仮想マシンのパスワード（<span class="mainTC__code--dark-bg">foobar!</span>, <a href="/course/learnenough/command-line-1_1#aside-virtual_machine">Box1.2</a>）、トラブルから抜け出す時（<span class="mainTC__code--dark-bg">grep foobar</span>, <a href="/course/learnenough/command-line-1_3#aside-getting-out-of-trouble">Box1.4</a>）、そしてManページ（<a href="/course/learnenough/command-line-1_4#listing-1_4">リスト1.4</a>）である。
+        </p>
+        <p>最初の3つは私が勝手に使ったものだが、最後のは私は何もしていない。</p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p>...if name contains a slash (/) then man interprets</p>
+            <p>it as a file specification,  so that you can do man</p>
+            <p> ./foo.5 or even man /cd/foo/bar.1.gz.</p>
+        </div>
+        <p>
+            <span class="italic">foo</span>と<span class="italic">bar</span>の両方が<span class="mainTC__code--dark-bg">man</span>自体のmanページで使われているのが見てとれる。
+            これはコンピュータ界でこれらの用語が一般的であることを明確に示している。
+        </p>
+        <p>
+            これらの奇妙な用語の起源はなんなのだろうか？いつも通り、<a href="http://www.catb.org/jargon/html/">Jargonファイル</a>（の<a href="http://www.catb.org/jargon/html/F/foo.html">foo</a>というタイトルで）で確認することができる。
+        </p>
+        <div class="mainTC__box--quote">
+            <p class="title">
+                foo: /foo/
+            </p>
+            <p class="title">
+                1. 感嘆詞。不快を表す語。
+            </p>
+            <p class="title">
+                2. [とても一般的]あらゆるものに対しての名前の例として広く使われる。ex. プログラムやファイル（特にすぐに消すようなファイル）など。
+            </p>
+            <p class="title">
+                3. <a href="http://www.catb.org/jargon/html/M/metasyntactic-variable.html">メタシンタックス変数</a>の最初の標準リストにシンタックスの例として載っている。<a href="http://www.catb.org/jargon/html/B/bar.html">bar</a>,<a href="http://www.catb.org/jargon/html/B/baz.html">baz</a>,<a href="http://www.catb.org/jargon/html/Q/qux.html">qux</a>,<a href="http://www.catb.org/jargon/html/Q/quux.html">quux</a>も要参照。
+            </p>
+            <p>
+                'foo'が'bar'と一緒に使われるのは、第二次世界大戦での軍隊内でのスラング、<a href="http://www.catb.org/jargon/html/F/FUBAR.html">FUBAR</a>[<a href="https://www.urbandictionary.com/define.php?term=fubar">オリジナルの意味はこちら</a>]に由来し、のちに<a href="http://www.catb.org/jargon/html/F/foobar.html">foobar</a>となった。
+            </p>
+            <p>
+                Jargonファイルの初期のバージョンではこの変化を戦後の不適切な使用例と解釈していたが、FUBAR自体が、おそらくドイツ語の<span class="italic">furchtbar</span>(ひどい)の影響を受けている'foo'の派生である可能性が高く、`foobar`はおそらくオリジナルの形なのだろう。
+            </p>
+        </div>
+        <p>
+            <a href="http://www.catb.org/jargon/html/M/metasyntactic-variable.html">メタシンタックス変数</a>のリンクを辿ると、次のことが分かる。
+        </p>
+        <div class="mainTC__box--quote">
+            <p class="title">
+                メタシンタックス変数: n.
+            </p>
+            <p>
+                例で使用され、議論されているものが何であるか理解されているときに使われる名前、あるいは議論されているあるクラスのランダムなメンバーを表すと理解されているときに使われる名前。
+                'foo'という単語はは最も簡単な例である。混乱を避けるため、ハッカーは一切（、あるいは滅多に）'foo'や似たような単語を長期的な名前として使わない。
+                ファイル名においての一般的な慣用としては、メタシンタックス変数の名前から始まるファイルはいつでも消していいようなファイルを指す。
+            </p>
+            <p>
+                メタシンタックス変数がこう呼ばれている理由は（1）プログラムについて話すときに使われるメタ言語の中の変数だから。（2）中身の値が変数であるような場合が多いため。（例えば"f(foo, bar)の値はfooとbarの合計である"のような）
+                しかし、もっともらしく示唆されていることとして、"メタシンタックス変数"と呼ばれる本当の理由は響きがいいからとされる。
+            </p>
+        </div>
+        <p>
+            言い換えればもし何かファイルを作りたくて、またその名前が何でもよければ、その名前は"foo"でいい。一旦"foo"を使ったら次のファイルは"bar"、その次は"baz"となる。
+            その後に続くものもあるが（"quux"も一つの<a href="http://www.catb.org/jargon/html/Q/quux.html">選択肢</a>である）、多くの場合において三つで十分である。
+        </p>
+    </div>
+    <p>
+        コマンドラインを使っていて、<span class="mainTC__code mainTC__code--emphasized">cd</span>（章4で説明されている）を使ってディレクトリを変更し、<span class="mainTC__code mainTC__code--emphasized">ls</span>を即座に入力することでディレクトリの中身を確認するということをよく行う。
+        これによって指針を作ることができ、次に何を行うであれ、良い第一歩となる。
+    </p>
+    <p>
+        <span class='mainTC__code mainTC__code--emphasized'>ls</span>の便利な機能として、ワイルドカードキャラクター<span class='mainTC__code mainTC__code--emphasized'>*</span>（"star(スター)"と読む）をサポートしている。
+        例えば、.".txt"で終わるファイルを全てリスト表示したいとき、このように入力すれば良い。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">ls</span> *.txt</p>
+        <div class="mainTC__code--emphasized">
+            <p>sonnet_1.txt</p>
+            <p>sonnet_1_reversed.txt</p>
+        </div>
+    </div>
+    <p>
+        ここでは<span class='mainTC__code mainTC__code--emphasized'>*.txt</span>（"star dot tee-ex-tee"と読む）が自動的に".txtで終わるファイル全て"のバターンに合うファイル名として拡張される。
+    </p>
+    <p>
+        <span class='mainTC__code mainTC__code--emphasized'>ls</span>には三つの、特に重要なオプションがある。
+        一つが"long form(長い形式)"の頭文字である、<span class='mainTC__code mainTC__code--emphasized'>-l</span>である。（"dash-ell"と読む）
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> ls <span class="mainTC__code--space">-l</span> *.txt</p>
+        <div class="mainTC__code--emphasized">
+            <p>total 16</p>
+            <p>-rw-r--r-- 1 mhartl staff  87 Jul 20 18:05 sonnet_1.txt</p>
+            <p>-rw-r--r-- 1 mhartl staff 294 Jul 21 12:09 sonnet_1_reversed.txt</p>
+        </div>
+    </div>
+    <p>
+        ここでは<span class='mainTC__code mainTC__code--emphasized'>ls <span class="mainTC__code--space">-l</span></span>で出力されたほとんどの情報は無視しても大丈夫だが、見て欲しいのは長い形式リストの日付と時間が最後に編集された時間を指し示していることだ。
+        日付の前の数字はファイルのサイズをバイト単位で示している。
+    </p>
+    <p>
+        <span class='mainTC__code mainTC__code--emphasized'>ls</span>の二つ目の強力なオプションは"list by reaversed time of modification(long format)、編集時間の逆順にリストを表示（長い形式）", もしくは<span class="mainTC__code mainTC__code--emphasized">ls <span class="mainTC__code--space">-rtl</span></span>と呼ばれるもので、
+        それぞれのファイルやディレクトリを最近編集された順に長い形式でリストを表示する。（reverse(リバース)、なので一番最近編集されたものが見やすくなるようにスクリーンの一番下にくる。）
+    </p>
+    <p>
+        これはディレクトリの中にたくさんのファイルがある場合に、ファイルをダウンロードした時など、最近編集されたものしか探していない時に特に便利である。
+        章3.1で例を見るが、今試してみるのは自由である。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span><span class="mainTC__code--space">ls</span>-rtl</p>
+        <div class="mainTC__code--emphasized">
+            <p>&ltシステムによって結果は異なる&gt</p>
+        </div>
+    </div>
+    <p>
+        ところで、<span class='mainTC__code mainTC__code--emphasized'>-rtl</span>は短い形式でよく使われるが、このようにそれぞれ別にオプションを書くこともできる。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> ls <span class="mainTC__code--space">-r</span>-t <span class="mainTC__code--space">-l</span></p>
+    </div>
+    <p>
+        加え、順番は関係ないので<span class='mainTC__code mainTC__code--emphasized'>ls <span class="mainTC__code--space">-trl</span></span>のように入力しても同じ結果となる。
+    </p>
+    <h1 class="sub-title">2.2.1 隠しファイル</h1>
+    <p>
+        最後に、Unixには"隠しファイル（とディレクトリ）"という概念がある。初期設定ではリスト表示時に出てこない。
+        隠しファイル、ディレクトリはドット<span class='mainTC__code mainTC__code--emphasized'>.</span>で始まることで判別でき、一般的にユーザ設定を保存するような用途で使われる。
+    </p>
+    <p>
+        例えば、<a href="https://www.learnenough.com/git"><span class="italic">Learn Enough Git to Be Dangerous</span></a>では、<span class='mainTC__code mainTC__code--emphasized'>.gitignore</span>と呼ばれるファイルを作るが、これは特定のプログラム（Git）に特定のパターンに合うファイルを無視するように教えるファイルである。
+        具体的な例として、".txt"で終わるファイル全てを無視したい時、このようにする。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">echo</span> "*.txt" <span class="mainTC__code--space">></span> .gitignore</p>
+        <p class="mainTC__code--prmopt"><span>$</span> <span class="mainTC__code--space">cat</span> .gitignore</p>
+        <p><span class="mainTC__code--emphasized">*.txt</span></p>
+    </div>
+    <p>
+        もし<span class='mainTC__code mainTC__code--emphasized'>ls</span>を実行しても、このファイルは出てこない。なぜなら隠されているからだ。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> ls</p>
+        <div class="mainTC__code--emphasized">
+            <p>sonnet_1.txt</p>
+            <p>sonnet_1_reversed.txt</p>
+        </div>
+    </div>
+    <p>
+        <span class='mainTC__code mainTC__code--emphasized'>ls</span>で隠しファイル、ディレクトリを表示するためには、<span class='mainTC__code mainTC__code--emphasized'>-a</span>オプション（"all"の意）を引数に渡す必要がある。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--space">ls</span>-a</p>
+        <div class="mainTC__code--emphasized">
+            <p>. <span class="mainTC__code--list">.gitignore</span><span class="mainTC__code--list">sonnet_1_reversed.txt</span></p>
+            <p>.. <span class="mainTC__code--list">sonnet_1.txt</span></p>
+        </div>
+    </div>
+    <p>
+        これで<span class='mainTC__code mainTC__code--emphasized'>.gitignore</span>も表示された。（<span class='mainTC__code mainTC__code--emphasized'>.</span>と<span class='mainTC__code mainTC__code--emphasized'>..</span>については章4.3にて学習する。）
+    </p>
+
+    <h1 class="sub-title"><span class="italic">2.2.2 演習</span></h1>
+    <p>
+        1. 全ての"s"から始まる隠れファイルでないものを表示するコマンドはなんだろうか。 
+    </p>
+    <p>
+        2. 長い形式で編集時間で逆順にし、"onnet"を含む全ての隠れファイルでないものを表示するコマンドはなんだろうか。
+        ヒント：ワイルドカードオペレータを始めと終わりに使う。
+    </p>
+    <p>
+        3. 長い形式で編集時間を逆順にし、全てのファイル（隠しファイルを含む）を表示するコマンドはなんだろうか。
+    </p>
+</div>

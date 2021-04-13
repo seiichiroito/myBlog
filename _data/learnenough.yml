@@ -1,0 +1,8 @@
+- name: "コマンドライン"
+  content: "コマンドラインはコンピュータとやり取りするための、強力で柔軟なテキストベースのインターフェイス。"
+  image: /assets/images/course/learnenough/command-line.png
+  url: "/course/learnenough/command-line-0-preface"
+- name: "テキストエディタ"
+  content: "プレーンテキスト ーコンピュータコードやワールドワイドウェブに使われる普遍的なデータ形式ー を編集するために必要不可欠なこのツールの基礎を習得。"
+  image: /assets/images/course/learnenough/text-editor.png
+  url: "/course/learnenough/text-editor-0-preface"

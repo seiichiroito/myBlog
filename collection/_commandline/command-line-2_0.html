@@ -1,0 +1,60 @@
+---
+layout: tutorial
+category: commandline
+title: "2.0 ファイルの操作"
+section: "章 2"
+origin: "https://www.learnenough.com/command-line-tutorial/manipulating_files#cha-manipulating_files"
+---
+<div class="mainTC">
+    <p>
+        基本的なコマンドの実行方法は学んだので、コマンドラインで最も大事なタスクの一つであるファイル操作を学ぶ準備ができた。
+        このチュートリアルは技術的な前提知識を想定していないので、テキストを編集するために作られたプログラムの使い方を知っている必要はない。
+        （テキスト•エディタと呼ばれるそのプログラムは、次のチュートリアルである<a href="https://www.learnenough.com/text-editor"><span class="italic">Learn Enough Text Editor to Be Dangerous</span></a>の主題である。）
+    </p>
+    <p>
+        これはつまりコマンドラインにて手動でファイルを作らならければならないことを意味する。ちなみにこれは仕様であり、バグではない。（<a href="#aside-speak-geek">Box2.1</a>）
+        コマンドラインでファイルを作る方法を学ぶことはそれ自身で貴重なスキルである。    
+    </p>
+    <div id="aside-speak-geek" class="mainTC__box u-mtbm">
+        <h1 class="mainTC__box--title">Box2.1. "オタク語"を話すことを学ぶ</h1>
+        <p>
+            ソフトウェア開発を学ぶ上で大事なことの一つは、ハッカーやマニア、オタクの文化に精通することである。例えば、"それはバグではなく、仕様である。"というフレーズは、欠点を美点として扱うよくある手法を意味する。
+            Urban Dictionaryではこう<a href="https://www.urbandictionary.com/define.php?term=It%27s+not+a+bug%2C+it%27s+a+feature&defid=6751775">定義</a>している。
+        </p>
+        <div class="mainTC__box--quote">
+            <p class="title">
+                それはバグではなく、仕様である。
+            </p>
+            <p>
+                プログラムの中の欠陥を実際そのような動きをするものであるとユーザに納得させようとするときにソフトウェア開発者が言い訳として使う言葉。
+            </p>
+        </div>
+        <p>
+            ハッカー界隈の<a href="http://www.catb.org/jargon/html/go01.html">膨大で面白い語彙集</a>を含んでいる<a href="http://www.catb.org/jargon/html/">Jargon（専門語）ファイル</a>では、<a href="http://www.catb.org/jargon/html/F/feature.html">仕様</a>というタイトルの記事でこのテーマを展開している。
+        </p>
+        <div class="mainTC__box--quote">
+            <p>
+                "ドキュメントに書かれていない仕様"というのは<a href="http://www.catb.org/jargon/html/B/bug.html">バグ</a>のよくあるユーモアな言い回しのようである。
+                ここに"一問オタクテスト"と呼ばれることもある関連したジョークがある。
+            </p>
+            <p>
+                あなたは誰かにこう言う。
+            </p>
+            <p>
+                「今日、仕様(FEATURE)と書かれたうぬぼれたプレートをつけたフォルクスワーゲン•ビートルを見たんだ。」
+            </p>
+            <p>
+                もし彼/彼女が笑ったら、彼/彼女は<a href="http://www.catb.org/jargon/html/G/geek.html">オタク</a>である。
+
+            </p>
+        </div>
+        <p>
+            このジョークは"バグ"が"フォルクスワーゲン•ビートル”を表す一般的なスラングであるところからきている。
+            仕様と書かれたうぬぼれたプレートをつけているビートルは、さながら"バグではなく、仕様である"が現実に現れたものと言えるだろう。(<a href="#figure-2_1">図2.1</a>)
+        </p>
+        <p>
+            もしあなたがオタクでもマニアでもなくても、"オタク語を話す"ことを学ぶことは、技術的展望とそれを取り巻く世界の両方を渡り歩く手助けとなるだろう。
+        </p>
+    </div>
+    {% include component/figure.html num=12 %}
+</div>

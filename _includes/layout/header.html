@@ -1,0 +1,13 @@
+<header class="header">
+    <div class="wrap container-lr">
+        <a class="header__logo" href="/">
+            <img class="u-hs" src="/assets/images/general/logo-white.png" alt="logo">
+        </a>
+        <input type="checkbox" id="sidebar__menu" class="sidebar__menu--check">
+        <label for="sidebar__menu" class="sidebar__menu--show"><i class="fas fa-bars"></i></label>
+        <nav class="header__nav">
+            {% include component/nav-links.html %}
+        </nav>
+        {% include component/sidebar.html %}
+    </div>
+</header>

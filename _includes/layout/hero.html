@@ -1,0 +1,15 @@
+{% assign day = site.time | date: "%-d" | to_integer %}
+{% assign maxim = site.data.maxim[day] %}
+
+<div class="hero">
+    <div class="wrap container-lr">
+        <div class="hero__main">
+            <h1 class="hero__content hero__content--en">"{{ maxim.content }}"</h1>
+            <p class="hero__content hero__content--ja">"{{ maxim.content-ja }}"</p>
+        </div>
+        <div class="hero__sub u-mtm u-ali-r">
+            <h2 class="hero__name hero__name--en">-{{ maxim.name }}</h2>
+            <p class="hero__name hero__name--ja">- {{ maxim.name-ja }}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+---
+layout: tutorial
+category: commandline
+title:  "1.0 基礎"
+section: "章 1"
+origin: "https://www.learnenough.com/command-line-tutorial/basics#cha-basics"
+---
+<div class="mainTC">
+    <p>
+        <span class="italic">Learn Enough Command Line to Be Dangerous</span>とは完全な初心者のためのコマンドライン入門であり、出来るだけ多くの人に”コンピューターマジック”(<a href="#aside-computer_magic">Box1.1</a>)の共通の基礎を教えるよう設計された<a href="https://www.learnenough.com/">チュートリアルシリーズ</a>の一つ目である。
+    </p>
+    <p>
+        このチュートリアルは、ソフトウェア開発者と働く人やソフトウェア開発者を志す人両方にむけて作られている。比較的高度な技術的素養を想定している他の多くのコマンドラインチュートリアルと違い、*Learn Enough Command Line to Be Dangerous*は一般的なコンピュータの知識( アプリを立ち上げられる、ウェブブラウザを使える、<a href="https://www.google.com/search?q=learn+to+touch+type">タッチタイプ</a>ができるなど )以上の前提知識は想定していない。とりわけ、<a href="https://www.learnenough.com/text-editor">テキストエディタの使い方</a>、あるいはテキストエディタとは何かを知っているかことを想定していない。それどころか、このチュートリアルではコマンドラインとは何かを知っているかも想定していないので、もしタイトルで困っていても、あなたはまだ正しい場所にいる。
+    </p>
+    <p>
+        最後に、仮にもし、既にコマンドラインの使い方を知っていても、このチュートリアルを読み進めることで（また演習をすることで）、いくらか知識が補完され、またおそらく新しいことをいくらか学ぶことができるだろう。
+
+    </p>
+
+    <div id="aside-computer_magic" class="mainTC__box u-mtbm">
+        <h1 class="mainTC__box--title">Box 1.1 コンピューターマジック</h1>
+        <p>
+            コンピュータは、現実世界で私たちが獲得してきた中で最も魔法に近いものかもしれない。機械に呪文を打ち込み、そして、 ー もし呪文が合っていたら ー 機械はその命令を行う。そんな魔法を行うために、コンピュータの魔女と魔法使いは言葉だけでなく、杖、ポーション、そしていくつかの古代の本に頼っている。
+        </p>
+        <p>
+            一括りにし、これらの技はソフトウェア開発として知られている。コンピューターブログラミングに加え、コマンドラインやテキストエディタ、バージョン管理、またそれらのツールの知識を持つことは、おそらく技術者とそうでない人の主な境界線となるだろう。（もしくは魔法用語で言えば、魔法使いと<a href="https://en.wikipedia.org/wiki/Muggle">マグル</a>との間の違いとなる。）このチュートリアルはこの技術者とそうでない人の境界線を越える最初のステップとして存在している。技術的素養を身につけることで私たちはソフトフェアの魔法使いとなり、コンピューターの呪文を詠唱し、命令を実行してくれる機械を得ることができるだろう。
+        </p>
+        <p>
+            私は<a href="https://www.michaelhartl.com/">Michael Hartl</a>。<a href="https://railstutorial.org/book">本</a>と<a href="https://screencasts.railstutorial.org/" >スクリーンキャスト</a>の両方で構成された、ウェブ開発入門の一つである<a href="https://www.railstutorial.org/">Ruby on Railsチュートリアル</a>の製作者としてよく知られているであろう。(またおそらく、より数学的側面である<a href="https://tauday.com/">Tau Day</a>の創設者、<a href="https://tauday.com/tau-manifesto">The Tau Manifesto</a>の著者として私を知っている方もいるだろう。)
+        </p>    
+        <p>
+            Railsチュートリアルに関してよくされる質問の一つにこんなものがある。「完全な初心者に Railsチュートリアルは向いているでしょうか?」その答えは、「あまりお勧めできない。」である。Ruby on Railsチュートリアルによって完全な初心者がウェブ開発を学ぶことが可能な一方で(実際多くのことを学ぶだろう)、挑戦的でたまにイライラすることもあり、一般的に勧めていない。代わりに私はこのチュートリアルから始めることを勧めている。
+        </p>    
+    </div>
+
+    <p>
+        多くのプログラミングのチュートリアルはコマンドラインに関して、ごまかすか既に使い方を知っていることを想定している。しかしコマンドラインの基礎を理解することは技術力のある開発者になるために絶対に不可欠である。
+    </p>
+    
+    <p>
+        経験豊富なコンピュータプログラマーのデスクトップを見ると、macOSのような精錬されたグラフィカルインターフェイスを搭載したシステム上でさえ、それぞれに一連のコマンドを含む、ターミナルウィンドウがたくさんあるだろう。（<a href="#figure-1_1">図1.1</a>）。コマンドラインを熟練することはプロダクトマネージャーやプロジェクトマネージャー、デザイナーなどの開発者と働く必要のある人にとっても役立つ。この不可欠な技術的素養をできる限り多くの読者に理解してもらうことが<span class="italic">Learn Enough Command Line to Be Dangerous</span>のゴールである。
+
+    </p>
+    {% include component/figure.html num=1 %}
+</div>

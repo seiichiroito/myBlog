@@ -1,0 +1,197 @@
+---
+layout: tutorial
+category: commandline
+title: "2.3 名前変更,コピー,削除"
+section: "章 2"
+origin: "https://www.learnenough.com/command-line-tutorial/manipulating_files#sec-renaming_copying_deleting"
+---
+
+<div class="mainTC">
+    <p>
+        リスト表示の次におそらく最も使われるファイル操作はそれらのファイルの名前の変更、コピー、そして削除だろう。
+        リスト表示と同様に、最近の多くのオペレーションシステムではグラフィカルユーザインターフェイスによってそのようなタスクはできるようになっているが、
+        多くの文脈においてコマンドラインでそれらを実行する方が便利である。
+        Note: もしmacOSを使っている場合、このタイミングで<a href="#aside-macOS_bash">Box2.3</a>の指示にしたがったほうがよい。
+    </p>
+    <div id="aside-maxOS_bash" class="mainTC__box u-mtbm">
+        <h1 class="mainTC__box--title">Box2.3. macOSでBashに変更する</h1>
+        <p>
+            もしmacOSを使っている場合、このタイミングでこのチュートリアルにあった正しいシェルプログラムを使っているかを確認した方がいい。
+            <a href="https://en.wikipedia.org/wiki/MacOS_Catalina">macOS Catalina</a>の標準シェルは<a href="https://en.wikipedia.org/wiki/Z_shell">Z shell</a>（Zsh）だが、このチュートリアルでの結果と一致させるためにシェルを<a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a>と呼ばれるシェルに変えることをお勧めする。
+        </p>
+        <p>
+            まず最初にすることとして、<span class="mainTC__code--dark-bg">echo</span>コマンドを使って今どのシェルを実行しているかを確認することができる。（<a href="/course/learnenough/command-line-1_3">章1.3</a>）
+        </p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span><span class="mainTC__code--space">echo</span>$SHELL</p>
+            <p>/bin/bash</p>
+        </div>
+        <p>
+            これで<span class="mainTC__code--dark-bg">$SHELL</span>という<a href="https://www.cyberciti.biz/faq/set-environment-variable-unix/">環境変数</a>を出力している。
+            上のような出力が出た場合、既にBashを使っているのでこのままチュートリアルを続けることができる。（珍しいケースとして、<span class="mainTC__code--dark-bg">$SHELL</span>が現在のシェルとは異なることがあるが、次の工程を踏むことで正しいシェルに変更することができる。）
+        </p>
+        <p>
+            <a href="/course/learnenough/command-line-1_2#listing-1_1">リスト1.1</a>で表示されたような警告は無視してもらっていい。Z shellへの変更、使用方法を含むより詳しい情報に関してはLearn Enoughブログの<a class="https://news.learnenough.com/macos-bash-zshell">"Macs上のZ Shellを使ってLearn Enoughチュートリアルを進める"</a>を参照。
+        </p>
+        <p>
+            <span class="mainTC__code--dark-bg">echo</span>の他の出力として以下の可能性がある。
+        </p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span><span class="mainTC__code--space">echo</span>$SHELL</p>
+            <p>/bin/zsh</p>
+        </div>
+        <p>
+            もしこのような出力が出たら、<span class="mainTC__code--dark-bg">chsh</span>（"change shell"の意）コマンドを以下のように実行すべきである。
+        </p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span><span class="mainTC__code--space">chsh</span> -s <span class="mainTC__code--space">/bin/bash</span></p>
+        </div>
+        <p>
+            この時、おそらくシステムがパスワードを入力するように促してくるはずなので、それに従うこと。
+            その後Command-Qでシェルプログラムを完全に終了し、改めて開けば良い。
+        </p>
+        <p>
+            正しく変更できたかどうかは<span class="mainTC__code--dark-bg">echo</span>を使って確かめることができる。
+        </p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span><span class="mainTC__code--space">echo</span>$SHELL</p>
+            <p>/bin/bash</p>
+        </div>
+        <p>
+            ここで、<a href="/course/learnenough/command-line-1_2#listing-1_1">リスト1.1</a>で示した警告が出るかもしれないが、無視しても大丈夫である。
+        </p>
+        <p>
+            ちなみに上記の手順は元に戻すこともできるので、システムの損傷を気にする必要はない。より詳しい情報については<a class="https://news.learnenough.com/macos-bash-zshell">"Macs上のZ Shellを使ってLearn Enoughチュートリアルを進める"</a>を参照。
+        </p>
+    </div>
+    <p>
+        ファイル名の変更は<span class='mainTC__code mainTC__code--emphasized'>mv</span>（"move"の省略）コマンドによって可能である。
+    </p>
+    <div class="mainTC__code u-mtbm mainTC__code--block">
+        <p><span class="mainTC__code--prompt">$</span><span class="mainTC__code--emphasized">echo</span> "test test"<span class="mainTC__code--space">></span>test</p>
+        <p class="highlight"><span class="mainTC__code--prompt">$</span> mv <span class="mainTC__code--space">test</span>test_file.txt</p>
+        <p><span class="mainTC__code--prompt">$</span>ls</p>
+        <p>test_file.txt</p>
+    </div>
+    <p>
+        この作業で<span class='mainTC__code mainTC__code--emphasized'>test</span>というファイルが<span class='mainTC__code mainTC__code--emphasized'>test_file.txt</span>というファイルに変更した。
+        例の最後で<span class='mainTC__code mainTC__code--emphasized'>ls</span>を実行することで名前変更が成功していることを確認しているが、テストファイル以外のシステム固有のファイルはここでは出力の表示から省略している。
+        （"move"という名前は一般的に<span class='mainTC__code mainTC__code--emphasized'>mv</span>がファイルを別のディレクトリに変更するのに使われるところに由来し（章4）、その途中で名前の変更を行うことができる。元のディレクトリと移動先のディレクトリが同じ時、"move"は単に名前を変更するだけとなる。）
+    </p>
+    <p>
+        ファイルのコピーは<span class='mainTC__code mainTC__code--emphasized'>cp</span>（"copy"の省略）を使ってできる。
+    </p>
+    <div class="mainTC__code u-mtbm mainTC__code--block">
+        <p class="highlight"><span class="mainTC__code--prompt">$</span><span class="mainTC__code--emphasized">cp</span><span class="mainTC__code--space">test_file.txt</span>second_test.txt</p>
+        <p><span class="mainTC__code--prompt">$</span>ls</p>
+        <p>second_test.txt</p>
+        <p>test_file.txt</p>
+    </div>
+    <p>
+        最後に、ファイルを削除するためのコマンドは<span class='mainTC__code mainTC__code--emphasized'>rm</span>（"remove"の省略）である。
+    </p>
+    <div class="mainTC__code u-mtbm mainTC__code--block">
+        <p><span class="mainTC__code--prompt">$</span><span class="mainTC__code--emphasized">rm</span><span class="mainTC__code--space">second_test.txt</span></p>
+        <p>remove <span class="mainTC__code--space">second_test.txt?</span>y</p>
+        <p><span class="mainTC__code--prompt">$</span>ls <span class="mainTC__code--space">second_test.txt</span></p>
+        <p>ls: <span class="mainTC__code--space">second_test.txt:</span> No such file or directory</p>
+    </div>
+    <p>
+        多くのシステムにおいて、標準設定としてファイルを削除していいかの確認のプロンプトが表示されるだろう。
+        "y"か"Y"で始まるどのような返答でもファイルは削除され、他の返答では削除の命令は実行されなくなる。
+    </p>
+    <p>
+        ところで、<span class='mainTC__code mainTC__code--emphasized'>cp</span>や<span class='mainTC__code mainTC__code--emphasized'>mv</span>を実行する時、私は<span class='mainTC__code mainTC__code--emphasized'>test_file.txt</span>や<span class='mainTC__code mainTC__code--emphasized'>second_test.txt</span>の文字をほとんど入力していない。
+        代わりに、<span class='mainTC__code mainTC__code--emphasized'>test⇥</span>や<span class='mainTC__code mainTC__code--emphasized'>sec⇥</span>（⇥はタブキーを表している。（<a href="/course/learnenough/command-line-1_5#table-1_1" >テーブル1.1</a>））のように入力しており、これはタブ補完と呼ばれる。（<a href="#aside-tab_completion">Box2.4</a>）
+    </p>
+    <div id="aside-tab_completion" class="mainTC__box u-mtbm">
+        <h1 class="mainTC__box--title">Box2.4. タブ補完</h1>
+        <p>
+            最近のコマンドラインプログラム（シェル）の多くはタブ補完をサポートしており、システムで一つしかマッチす単語がない時に自動的に補完してくれる機能である。
+            例えば、"tes"で始まるファイルが<span class="mainTC__code--dark-bg">test_file</span>だけの時、下記ののようにコマンドを省略することができる。
+        </p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span>rm <span class="mainTC__code--space">test⇥</span></p>
+        </div>
+        <p>
+            ⇥はタブキーを示している。（<a href="/course/learnenough/command-line-1_5#table-1_1" >テーブル1.1</a>）シェルはこの後ファイル名を補完し、<span class="mainTC__code--dark-bg">rm <span class="mainTC__code--space">test_file</span></span>と表示されるはずである。
+            特にファイル名（やディレクトリ）の長い時にタブ補完はかなりの時間を節約しうる。また、一つずつのファイルの名前を全て覚える必要がなく、最初の数文字だけでいいため、<a href="https://en.wikipedia.org/wiki/Cognitive_load">認知負荷</a>を低減することもできる。
+        </p>
+        <p>
+            もし条件が曖昧な時、例えば<span class="mainTC__code--dark-bg">foobarquux</span>と<span class="mainTC__code--dark-bg">foobazquux</span>という二つのファイルがあった場合、単語はできる限り補完される。なので
+        </p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span>ls <span class="mainTC__code--space">foo⇥⇥</span></p>
+        </div>
+        は下記のように補完され
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span>ls <span class="mainTC__code--space">fooba</span></p>
+        </div>
+        <p>
+            もう一度タブを入力した場合、一致した単語のリストが表示される。
+        </p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span>ls <span class="mainTC__code--space">fooba⇥</span></p>
+            <p>foobarquux <span class="mainTC__code--space">foobazquux</span></p>
+        </div>
+        <p>
+            曖昧さをなくすためにより文字を入力することができるので、<span class="mainTC__code--dark-bg">fooba</span>の後に<span class="mainTC__code--dark-bg">r</span>を入力し、<span class="mainTC__code--dark-bg">⇥</span>を入力することで
+        </p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span>ls <span class="mainTC__code--space">foobar⇥</span></p>
+        </div>
+        <p>
+            その後<span class="mainTC__code--dark-bg">foobarquux</span>のように補完されるだろう。こういった状況はよくあるため、経験豊富なコマンドラインユーザーは単に<span class="mainTC__code--dark-bg">f⇥⇥</span>のように入力し、シェルに全ての可能性を表示させる。
+        </p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span>ls <span class="mainTC__code--space">f⇥⇥</span></p>
+            <p>figure_1.png <span class="mainTC__code--space">foobarquux</span> foobazquux</p>
+        </div>
+        <p>いつものように、この後曖昧さをなくすようにいくつか文字を入力することになる。</p>
+    </div>
+    <p>
+        環境設定をしていないUnixシステム上での<span class='mainTC__code mainTC__code--emphasized'>rm</span>の標準の振る舞いは実は確認なしでファイルを削除するのだが、（削除は元に戻せないので）多くのシステムではエイリアスとして<span class='mainTC__code mainTC__code--emphasized'>rm</span>コマンドを確認のオプションを使うようにしている。
+        （<span class='mainTC__code mainTC__code--emphasized'>man <span class="mainTC__code--space">rm</span></span>を実行して確かめられる通り、このオプションは<span class='mainTC__code mainTC__code--emphasized'>-i</span>であるため、実際の<span class='mainTC__code mainTC__code--emphasized'>rm</span>は<span class='mainTC__code mainTC__code--emphasized'>rm <span class="mainTC__code--space">-i</span></span>と同意である。）
+        例えば多くのファイルを削除しようとした時、一々それぞれのファイルの削除を確認するのが億劫のように、確認が不便な状況も多々ある。これは特に<a href="/course/learnenough/command-line-2_2">章2.2</a>で紹介したワイルドカード<span class='mainTC__code mainTC__code--emphasized'>*</span>を使う時によくある。
+    </p>
+    <p>
+        例えば、".txt"で終わる全てのファイルを一つのコマンドで、かつ一々確認せずに削除したい時、このように入力することができる。
+    </p>
+    <div class="mainTC__code--dark-bg u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span>rm <span class="mainTC__code--space">-f</span> *.txt</p>
+    </div>
+    <p>
+        ここでは<span class='mainTC__code mainTC__code--emphasized'>-f</span>（"force"の省略）が<span class='mainTC__code mainTC__code--emphasized'>-i</span>オプションを上書きし、全てのファイルが即座に削除される。
+        （<a href="https://en.wikipedia.org/wiki/Nota_bene">N.B.</a> ここであなたは<a href="/course/learnenough/command-line-1_1#figure-1_2">図1.2</a>のコマンドを理解できるようになった。）
+    </p>
+    <h1 class="sub-title">2.3.1 Unixの簡潔性</h1>
+    <p>
+        この章と<a href="/course/learnenough/command-line-2_2">章2.2</a>であったコマンドが短いことに気付いた人がいるかもしれない。
+        <span class='mainTC__code mainTC__code--emphasized'>list</span>や<span class='mainTC__code mainTC__code--emphasized'>move</span>、<span class='mainTC__code mainTC__code--emphasized'>copy</span>、そして<span class='mainTC__code mainTC__code--emphasized'>remove</span>の代わりに、<span class='mainTC__code mainTC__code--emphasized'>ls</span>、<span class='mainTC__code mainTC__code--emphasized'>mv</span>、<span class='mainTC__code mainTC__code--emphasized'>cp</span>、そして<span class='mainTC__code mainTC__code--emphasized'>rm</span>となっている。
+        前者のコマンドの方が理解しやすく覚えやすいため、実際のコマンドがなぜそのように長くなっていないのかきっと疑問に思うだろう。（<a href="#figure-2_4">図2.4</a>）
+    </p>
+    {% include component/figure.html num=15 %}
+    <p>
+        その答えとして、Unixは、ほとんどのコンピュータユーザーが遅い接続で中央サーバにログインしていた時から始まっており、ユーザーがキーを押してからターミナルに表示されるまてに顕著な遅延が発生する可能性があった。
+        ファイルをリスト表示するコマンドのような、頻繁に使われるコマンドにおいて、<span class='mainTC__code mainTC__code--emphasized'>list</span>と<span class='mainTC__code mainTC__code--emphasized'>ls</span>や<span class='mainTC__code mainTC__code--emphasized'>remove</span>と<span class='mainTC__code mainTC__code--emphasized'>rm</span>の違いが重要になりえた。
+    </p>
+    <p>
+        結果として、最も使われるUnixコマンドは2つか3つの文字で構成される傾向にある。それらのコマンドを覚えるのを難しくしているため、これは学習の際に少々不便になりうるが、コマンドラインを今後使っていく上で、例えば<span class='mainTC__code mainTC__code--emphasized'>mv</span>によって時間を節約できるだろう。
+    </p>
+    <h1 class="sub-title"><span class="italic">2.3.2 演習</span></h1>
+    <p>
+        1. <span class='mainTC__code mainTC__code--emphasized'>echo</span>コマンドとリダイレクトオペレータ<span class='mainTC__code mainTC__code--emphasized'>></span>を使って、"hello, world"というテキストを含んだ<span class='mainTC__code mainTC__code--emphasized'>foo.txt</span>というファイルを作成しなさい。
+        そして、<span class='mainTC__code mainTC__code--emphasized'>cp</span>コマンドを使って<span class='mainTC__code mainTC__code--emphasized'>foo.txt</span>のコピーである<span class='mainTC__code mainTC__code--emphasized'>bar.txt</span>というファイルを作成しなさい。
+        <span class='mainTC__code mainTC__code--emphasized'>diff</span>コマンドを使って二つのファイルの中身が同じことを確かめること。
+    </p>
+    <p>
+        2. <span class='mainTC__code mainTC__code--emphasized'>cat</span>コマンドとリダイレクトオペレータ<span class='mainTC__code mainTC__code--emphasized'>></span>を組み合わせ、<span class='mainTC__code mainTC__code--emphasized'>cp</span>コマンドを使わずに<span class='mainTC__code mainTC__code--emphasized'>foo.txt</span>のコピーである<span class='mainTC__code mainTC__code--emphasized'>baz.txt</span>を作りなさい。
+    </p>
+    <p>
+        3. <span class='mainTC__code mainTC__code--emphasized'>foo.txt</span>の中身の後に<span class='mainTC__code mainTC__code--emphasized'>bar.txt</span>の中身が続くようにした文字列を含む<span class='mainTC__code mainTC__code--emphasized'>quux.txt</span>というファイルを作りなさい。
+        ヒント：<a href="/course/learnenough/command-line-2_1#exercise-2_1">演習2.1.1</a>で書いたように、<span class='mainTC__code mainTC__code--emphasized'>cat</span>は複数の引数を持つことができる。
+    </p>
+    <p>
+        4. 存在しないファイルに対して、<span class='mainTC__code mainTC__code--emphasized'>rm <span class="mainTC__code--space">nonexistent</span></span>と<span class='mainTC__code mainTC__code--emphasized'>rm <span class="mainTC__code--space">-f</span>nonexistent</span>ではどう違うだろうか?
+    </p>
+ </div>

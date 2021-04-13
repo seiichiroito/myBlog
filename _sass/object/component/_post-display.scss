@@ -1,0 +1,39 @@
+.post-display {
+    box-sizing: border-box;
+    padding: 4%;
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #000;
+    &__header {
+        &--title {
+            font-size: 1.5em;
+        }
+    }
+    &:hover, &:active {
+        background-color: #edeae6;
+      }
+    &__image {
+        background-position: center center;
+        background-size: cover;
+        flex: 1;
+    }
+}
+
+
+@media (max-width: 48em) {
+    .post-display {
+        &__header {
+            &--title {
+                font-size: 1.2em;
+            }
+            &--date {
+                font-size: 0.8em;
+            }
+        }
+        &__content {
+            font-size: 0.9em;
+        }
+    }
+}

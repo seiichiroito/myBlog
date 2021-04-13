@@ -1,0 +1,36 @@
+.main {
+    background-color: $bc-main;
+    &--title {
+        font-size: 1.5em;
+        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+        padding-bottom: 5px;
+        margin-bottom: 30px;
+    }
+    &--sub-title {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
+    &__contents {
+        display: flex;
+        flex-wrap: wrap;
+        .post-display {
+            height: 30vh;
+        }
+        &--outer {
+            flex-basis: 50%;
+            max-width: 50%;
+        }
+    }
+}
+
+
+@media (max-width: 48em) {
+    .main {
+        &__contents {
+            &--outer {
+            flex-basis: 100%;
+            max-width: 100%;
+            }
+        }
+    }
+}

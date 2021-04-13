@@ -1,0 +1,9 @@
+{% case page.category %}
+    {% when "commandline" %}
+        {% assign figure = site.data.commandline[include.num] %}
+    {% when "texteditor" %}
+    {% assign figure = site.data.texteditor[include.num] %}
+{%endcase %}
+
+<img  id="figure-{{ figure.num }}" src="{{ figure.image }}" alt="{{ figure.content }}">
+<p class="figure">{{ figure.content }}</p>

@@ -1,0 +1,63 @@
+---
+layout: default-tutorial
+
+---
+<div class="tutorial">
+  <input type="checkbox" id="tutorial-sidebar__menu" class="tutorial-sidebar__menu--check">
+  <label for="tutorial-sidebar__menu" class="tutorial-sidebar__menu--show"><i class="fas fa-bars"></i></label>
+  <div class="tutorial-sidebar">
+    <div class="tutorial-sidebar--fixed">
+      {% case page.category %}
+        {% when "commandline" %}
+          {% assign tutorials = site.commandline %}
+        {% when "texteditor"%}
+          {% assign tutorials = site.texteditor %}
+      {% endcase %}
+      {% assign aside-section = "" %}
+      {% for tutorial in tutorials %}
+        {% if aside-section != tutorial.section %}
+          {% assign aside-section = tutorial.section %}
+          <p>
+            {{ aside-section }}
+          </p>
+        {% endif %}
+        <li>
+          <a href="{{ tutorial.url }}">{{ tutorial.title }}</a>
+        </li>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="tutorial__main">
+    <div class="tutorial__page">
+      {% include component/breadcrumbs.html %}
+      <header class="tutorial__header">
+        <p class="tutorial__header--section">{{ page.section }}</p>
+        <h1 class="tutorial__header--title">{{ page.title }}</h1>
+      </header>
+      <div class="tutorial__content">
+        {{ content }}
+      </div>
+      <div class="tutorial__navigator">
+        {% if page.previous %}
+          <a href="{{ page.previous.url }}">< {{page.previous.title }}</a>
+        {% else %}
+          <div></div>
+        {% endif %}
+        {% if page.next %}
+          <a href="{{ page.next.url }}">{{page.next.title }} ></a>
+        {% else %}
+          <div></div>
+        {% endif %}
+      </div>
+      {% if page.origin %}
+      <div class="tutorial__footer">
+          <p>
+            翻訳元サイト
+          </p>
+          <a href="{{page.origin }}">{{ page.origin }}</a>
+      </div>
+      {% endif %}
+    </div>
+    {% include layout/footer.html %}
+  </div>
+</div>

@@ -1,0 +1,45 @@
+.course-display {
+    box-sizing: border-box;
+    padding: 4%;
+    // display: inline-block;
+    text-decoration: none;
+    display: flex;
+    color: #000;
+    height: 30vh;
+    &:hover, &:active {
+        background-color: #edeae6;
+      }
+
+    &--img {
+        height: 100%;
+    }
+
+    &__content {
+        padding: 0 20px;
+        &--title {
+            font-size: 1.5em;
+        }
+        &--exp {
+            margin-top: 40px;
+            line-height: 1.5;
+        }
+    }
+}
+
+
+@media (max-width: 48em) {
+    .course-display {
+        align-items: center;
+        &--img {
+            height: 60%;
+        }
+        &__content {
+            padding-right: 0;
+            &--exp {
+                margin-top: 20px;
+                line-height: 1.5;
+                font-size: 0.8em;
+            }
+        }
+    }
+}

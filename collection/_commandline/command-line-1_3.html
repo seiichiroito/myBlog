@@ -1,0 +1,98 @@
+---
+layout: tutorial
+category: commandline
+title:  "1.3 最初のコマンド"
+section: "章 1"
+origin: "https://www.learnenough.com/command-line-tutorial/basics#sec-our_first_command"
+---
+<div class="mainTC">
+    <p>
+        最初のコマンドを実行する準備はできた。その最初のコマンドはスクリーンに<span class="mainTC__code mainTC__code--emphasized">hello</span>と表示するコマンドだ。（文字が表示される場所は”標準出力”と呼ばれる。”標準出力”は一般的にただのスクリーンをさし、実際の印刷機を指すことは滅多にない。）そのコマンドは<span class="mainTC__code mainTC__code--emphasized">echo</span>である。出力したい文字列（strings of characters） ー 略して単にstringとも呼ぶ ー を引数として渡す。<span class="mainTC__code mainTC__code--emphasized">echo</span>を実行するためには、”echo hello”とプロンプトに打ち込み、その後リターンキー（エンターとも呼ばれる。）を押す。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">echo</span> hello</p>
+        <p>helllo</p>
+        <p><span class="mainTC__code--prompt">$</span></p>
+    </div>
+    <p>
+        （コマンドはいつも自分で入力することをお勧めする。そうすることでコピー＆ペーストに頼るよりも、より多くのことを学ぶことができるだろう。）<span class="mainTC__code mainTC__code--emphasized">echo hello</span>によって”hello”と出力され、別のプロンプトが表示されることが分かる。簡潔さのために、ドルマーク`$`以外のプロンプトは省略している。
+    </p>
+    <p>
+        使い方を明確にするために、次の<span class="mainTC__code mainTC__code--emphasized">echo</span>コマンドを試そう。
+    </p>
+    <div class="mainTC__code mainTC__code--block  u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">echo</span> "goodbye"</p>
+        <p>goodbye</p>
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">echo</span> 'goodbye'</p>
+        <p>goodbye</p>
+        <p><span class="mainTC__code--prompt">$</span></p>
+    </div>
+    <p>
+        ここでは引用符で”goodbye”を囲っている。また<span class="mainTC__code mainTC__code--emphasized">"goodbye"</span>のようにダブル・クオート（二重引用符）も使えるし、<span class="mainTC__code mainTC__code--emphasized">'goodbye'</span>のようにシングル・クオート（一重引用符）も使えることがわかる。そのような引用符は視覚的に文字列の集まりを分かりやすくするために使われるが、<span class="mainTC__code mainTC__code--emphasized">echo</span>では多くの場合において必要としない(<a href="#listing-1_2">リスト1.2</a>)。
+    </p>
+    <div id="listing-1_2" class="mainTC__code mainTC__code--block u-mtbm">
+        <p class="mainTC__code--dark-bg mainTC__code--title">リスト1.2: "hello, goodbye"を二種類の方法で出力する。</p>
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">echo</span> hello, goodbye</p>
+        <p>hello, goodbye</p>
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">echo</span> "hello, goodbye"</p>
+        <p>hello, goodbye</p>
+        <p><span class="mainTC__code--prompt">$</span></p>
+    </div>
+    <p>
+        引用符を使ってる時、下記のように組みで使い忘れる時がある。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">echo</span> "hello, goodbye</p>
+        <p>></p>
+    </div>
+    <p>
+        ここで行き詰まったように思える。この状況から脱する特定の方法があるが（実際この場合、単にもう一つ引用符を加えてエンターを押すだけである。）、一般的なトラブル解決の秘策を知っておくと何かと便利である(<a href="#figure-1_9">図1.9</a>)。その秘策とは”Ctrl-C”と呼ばれる(<a href="#aside-getting-out-of-trouble">Box1.4</a>)。
+    </p>
+    {% include component/figure.html num=9 %}
+    <div id="aside-getting-out-of-trouble" class="mainTC__box u-mtbm">
+        <h1 class="mainTC__box--title">Box1.4. トラブルから抜け出す</h1>
+        <p>
+            コマンドラインを使う時、さまざまな問題が起こりうる。その問題とは、単に止まったり、コマンドを入力するのが難しくなったり、あるいは不可能になったりすることがある。下記がそのコマンドのいくつかの例である。
+        </p>
+        <div class="mainTC__code mainTC__code--block">
+            <p class="mainTC__code--dark-bg">$ echo "hello</p>
+        </div>
+        <div class="mainTC__code mainTC__code--block">
+            <p class="mainTC__code--dark-bg">$ grep foobar</p>        
+        </div>
+        <div class="mainTC__code mainTC__code--block">
+            <p class="mainTC__code--dark-bg">$ yes</p>
+        </div>
+        <div class="mainTC__code mainTC__code--block">
+            <p class="mainTC__code--dark-bg">$ tail</p>
+        </div>
+        <div class="mainTC__code mainTC__code--block">
+            <p class="mainTC__code--dark-bg">$ cat</p>
+        </div>
+        <p>
+            それぞれの状況で解決策は同じである。<span class="mainTC__code--dark-bg">Ctrl-C</span>を入力すればいい。
+        </p>
+        <p>
+            <span class="mainTC__code--dark-bg">Ctrl</span>とは”キーボード上のコントロール”キーを指し、<span class="mainTC__code--dark-bg">C</span>は"C"のラベルのついたキーを指す。<span class="mainTC__code--dark-bg">Ctrl-C</span>とは””コントロールキーを押した状態でCを押す”を意味している。特に、<span class="mainTC__code--dark-bg">C</span>はcの大文字を指しているわけではないので、コントロールキーに加えてシフトキーを押す必要はない。( <span class="mainTC__code--dark-bg">Ctrl-C</span>は制御コードをターミナルに送る。普通にCを入力しても特に何も起こらない。)
+        </p>
+        <p>
+            <span class="mainTC__code--dark-bg">Ctrl-C</span>を入力すると時々下記のように<span class="mainTC__code--dark-bg">^C</span>と表示される。
+        </p>
+        <div class="mainTC__code mainTC__code--block">
+            <p class="mainTC__code--dark-bg">$ tail<br>^C</p>
+        </div>
+        <p>
+            <a href="https://en.wikipedia.org/wiki/Control-C"><span class="mainTC__code--dark-bg">Ctrl-C</span>の起源</a>は不明なところがあるが、覚えやすいので私は”Cancel (キャンセル) ”という意味で考えている。どう覚えるかは自由だが、とにかく、覚えること。コマンドライン上で問題が起こったときの最善の策は大体<span class="mainTC__code--dark-bg">Ctrl-C</span>と入力することだからだ。
+        </p>
+        <p>
+            Note: <span class="mainTC__code--dark-bg">Ctrl-C</span>が失敗した時、90%の状況で<span class="mainTC__code--dark-bg">ESC</span>(エスケープキー)を押せば同じように解決できるだろう。
+        </p>
+    </div>
+    <h1 class="sub-title"><span class="italic">1.3.1 演習</span></h1>
+    <p>
+        1. “Hello, world”と出力するコマンドを入力しなさい。追加項目：<a href="#listing-1_2">リスト1.2</a>のように引用符を使う方法と使わない方法両方で同じことをやりなさい。
+    </p>
+    <p>
+        2. <span class="mainTC__code mainTC__code--emphasized">echo 'hello</span>と入力し（シングル・クオートが抜けている）、<a href="#aside-getting-out-of-trouble">Box1.4</a>でのテクニックを使い、問題を解決しなさい。
+    </p>
+</div>

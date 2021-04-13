@@ -1,0 +1,64 @@
+- category: "commandline"
+  content: "図1.0: Learn Enough"
+  image: /assets/images/course/learnenough/commandline/img1_0.png
+  num: "1_0"
+- category: "commandline"
+  content: "図1.1:　経験豊富な開発者のデスクトップのターミナルウィンドウ"
+  image: /assets/images/course/learnenough/commandline/img1_1.png
+  num: "1_1"
+- category: "commandline"
+  content: "図1.2: コマンドラインのコマンドの例"
+  image: /assets/images/course/learnenough/commandline/img1_2.png
+  num: "1_2"
+- category: "commandline"
+  content: "図1.3: macOS内で動いているLinux仮想マシン"
+  image: /assets/images/course/learnenough/commandline/img1_3.png
+  num: "1_3"
+- category: "commandline"
+  content: "図1.4: ターミナルウィンドウ"
+  image: /assets/images/course/learnenough/commandline/img1_4.png
+  num: "1_4"
+- category: "commandline"
+  content: "図1.5:　コマンドラインの図解（プロンプトの表示はあなたのとは少し違うかもしれない）"
+  image: /assets/images/course/learnenough/commandline/img1_5.png
+  num: "1_5"
+- category: "commandline"
+  content: "図1.6: いくつかの典型的なコマンド"
+  image: /assets/images/course/learnenough/commandline/img1_6.png
+  num: "1_6"
+- category: "commandline"
+  content: "図1.7:　3つのタブを含むターミナルウィンドウ"
+  image: /assets/images/course/learnenough/commandline/img1_7.png
+  num: "1_7"
+- category: "commandline"
+  content: "図1.8:　macOSの標準ターミナルのメニュー"
+  image: /assets/images/course/learnenough/commandline/img1_8.png
+  num: "1_8"
+- category: "commandline"
+  content: "図1.9: この猫は詰まっているようなので<span class='mainTC__code mainTC__code--emphasized'>Ctrl-C</span>をするべきだろう"
+  image: /assets/images/course/learnenough/commandline/img1_9.png
+  num: "1_9"
+- category: "commandline"
+  content: "図1.10: <span class='mainTC__code mainTC__code--emphasized'>man</span>に<span class='mainTC__code mainTC__code--emphasized'>man</span>を適用する"
+  image: /assets/images/course/learnenough/commandline/img1_10.png
+  num: "1_10"
+- category: "commandline"
+  content: "図1.11: シェイクスピアの最初のソネットのオリジナル"
+  image: /assets/images/course/learnenough/commandline/img1_11.png
+  num: "1_11"
+- category: "commandline"
+  content: "図2.1: それはバグではない、仕様である"
+  image: /assets/images/course/learnenough/commandline/img2_1.png
+  num: "2_1"
+- category: "commandline"
+  content: "図2.2: <span class='mainTC__code mainTC__code--emphasized'>cat</span>でファイルを見る"
+  image: /assets/images/course/learnenough/commandline/img2_2.png
+  num: "2_2"
+- category: "commandline"
+  content: "図2.3: <span class='mainTC__code mainTC__code--emphasized'>ls</span>のグラフィカルバージョン"
+  image: /assets/images/course/learnenough/commandline/img2_3.png
+  num: "2_3"
+- category: "commandline"
+  content: "図2.4: Unixコマンドの短さは混乱の原因となる可能性がある"
+  image: /assets/images/course/learnenough/commandline/img2_4.png
+  num: "2_4"

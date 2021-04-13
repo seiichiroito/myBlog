@@ -1,0 +1,182 @@
+.tutorial {
+    display: flex;
+    .wrap {
+        flex-direction: column;
+    }
+    &__main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    &__page {
+        padding: 20px;
+        max-width: 700px;
+        flex: 1;
+        margin: 0 auto;
+    }
+
+    &__header {
+        margin-top: 30px;
+        &--section {
+            font-size: 1.5em;
+        }
+        &--title {
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 1.8em;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+        }
+    }
+    &__content {
+        margin: 30px 0;
+    }
+    &__navigator {
+        display: flex;
+        justify-content: space-between;
+        a {
+            text-decoration: none;
+            background-color: #6b8586;
+            padding: 10px;
+            display: inline-block;
+            color: #fff;
+        }
+    }
+    &__footer {
+        p {
+            margin-bottom: 5px;
+        }
+        a {
+            text-decoration: underline;
+            text-decoration-color: rgba(98, 123, 124, 0.3);;
+            text-decoration-thickness: 0.13em;
+            color: #627b7c;
+            &:hover,
+            &:active {
+              text-decoration-color: #405152;
+              color: #405152;
+            }
+          }
+        color: #555;
+        margin-top: 10px;
+        padding-top: 10px;
+        font-size: 0.8em;
+        border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
+      }
+}
+
+.tutorial-sidebar {
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    flex: 1 0 300px;
+    height: 100vh;
+    &--fixed {
+        box-sizing: border-box;
+        transition: all 0.2s ease-in-out;
+        background-color: #F9F6F3;
+        width: 300px;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        position: fixed;
+        padding: 60px 30px 30px;
+        overflow-y: scroll;
+    }
+    li {
+        width: 100%;
+        display: block;
+        a {
+            padding: 10px 0;
+            display: inline-block;
+            text-decoration: none;
+            color: #4c5855;
+            width: 100%;
+            &:hover,&:active {
+                text-decoration: underline;
+            }
+        }
+      }
+    p {
+        font-size: 1.1em;
+        padding: 10px 0;
+        ~ p {
+            border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
+        }
+    }
+    &__menu {
+        &--check {
+            display: none;
+            &:checked {
+                ~ label {
+                    left: 10px;
+                }
+                ~ .tutorial-sidebar {
+                    flex: 1 0 0px;
+                    .tutorial-sidebar--fixed {
+                        width: 0px;
+                        padding: 0px;
+                    }
+                }
+            }
+        }
+        &--show {
+            background-color: $bc-main;
+            z-index: 5;
+            position: fixed;
+            top: 20px;
+            left: 260px;
+            border: 1px solid #000;
+            padding: 10px;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+}
+
+@media (max-width: 48em) {
+    .tutorial-sidebar {
+        flex: 1 0 0px;
+        &--fixed {
+            width: 0;
+            padding: 0;
+        }
+        &__menu {
+            &--check {
+                &:checked {
+                    ~ label {
+                        left: auto;
+                    }
+                    ~ .tutorial-sidebar {
+                        flex: 1 0 100%;
+                        .tutorial-sidebar--fixed {
+                            width: 100%;
+                            padding: 30px;
+                        }
+                    }
+                    ~ .tutorial__main {
+                        display: none;
+                    }
+                }
+            }
+            &--show {
+                right: 30px;
+                left: auto;
+            }
+        }
+    }
+}
+@media (max-width: 20em) {
+    .tutorial {
+        &__navigator {
+            flex-direction: column;
+            a {
+                margin: 5px;
+                &:last-child {
+                    text-align: right;
+                }   
+            }
+        }
+        &__footer {
+            font-size: 0.7em;
+        }
+    }
+}

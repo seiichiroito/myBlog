@@ -1,0 +1,19 @@
+---
+layout: default
+title: Learn Enough
+description: "Learn Enoughカリキュラム"
+---
+
+<div class="curriculum container-tb">
+    <div class="wrap container-lr">
+        {% include component/breadcrumbs.html %}
+        <div class="curriculum__contents">
+            <h1 class="curriculum__contents--title">{{ page.title }}</h1>
+            {% for course in site.data.learnenough %}
+            <div class="curriculum__contents-outer">
+                {% include component/course-display.html %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

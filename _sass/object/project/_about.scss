@@ -1,0 +1,66 @@
+.about {
+    .wrap {
+        flex-direction: column;
+    }
+    &__content {
+        margin-top: 30px;
+        &--title {
+            text-align: center;
+            font-size: 1.5em;
+        }
+    }
+    &__introduce {
+        display: flex;
+        width: 80%;
+        margin: 30px auto;
+        img {
+            height: 30vh;
+        }
+        &--title {
+            text-align: center;
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+        &--exp {
+            line-height: 1.3;
+            width: 80%;
+            margin: 10px auto 0;
+        }
+        &--sns {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background-color: #ffffff;
+            border-radius: 20%;
+            position: relative;
+            .fab {
+                top: 50%;
+                left: 50%;
+                position: absolute;
+                transform: translate(-50%, -50%);
+                font-size: 1.2em;
+            }
+            .fa {
+                &-twitter {
+                    color: #00acee;
+                }
+                &-github {
+                    color: #333;
+                }
+            }
+            & ~ & {
+                margin-left: 10px;
+            }
+        }
+    }
+
+}
+
+
+@media (max-width: 48em) {
+    .about {
+        &__introduce {
+            width: 100%;
+        }
+    }
+}

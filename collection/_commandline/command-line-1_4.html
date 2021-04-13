@@ -1,0 +1,149 @@
+---
+layout: tutorial
+category: commandline
+title: "1.4 Manページ"
+section: "章 1"
+origin: "https://www.learnenough.com/command-line-tutorial/basics#sec-man_pages"
+---
+<div class="mainTC">
+    <p>
+        コマンドラインを実行しているプログラムは専門的に<span class="italic">shell</span>と呼ばれる。
+        <span class="italic">shell</span>は利用可能なコマンドについて学ぶことができる、強力な（時に不可解な）ツールを含んでいる。
+    </p>
+    <p>
+        このツールとはそれ自身がコマンドラインのコマンドでもある<span class="mainTC__code mainTC__code--emphasized">man</span>（”manual”の省略形）である。引数としてコマンドの名前を取り（<span class="mainTC__code mainTC__code--emphasized">echo</span>のような）、そのコマンドについてより詳しく知ることができる。詳細はシステムによって異なるが、私のシステムで<span class="mainTC__code mainTC__code--emphasized">man echo</span>実行した結果が<a href="#listing-1_3">リスト1.3</a>である。
+    </p>
+    <div id="listing-1_3" class="mainTC__code mainTC__code--block u-mtbm">
+        <p class="mainTC__code--dark-bg mainTC__code--title">リスト1.3: <span class="mainTC__code--emphasized">man echo</span>を実行したときの結果</p>
+        <p>$ man echo</p>
+        <div class="mainTC__code--emphasized">
+            <p>ECHO(1)          BSD General Commands Manual         ECHO(1)</p>
+            <br>
+            <p>NAME</p>
+            <br>
+            <p>echo -- write arguments to the standard output</p>
+            <br>
+            <p>SYNOPSIS</p>
+            <p>echo [-n] [string ...]</p>
+            <br>
+            <p>DESCRIPTION</p>
+            <p> The echo utility writes any specified operands, separated by single blank
+                (` ') characters and followed by a newline (`\n') character, to the stan-
+                dard output.</p>
+            <br>
+            <p>   The following option is available:</p>
+            <br>
+            <p> -n  Do not print the trailing newline character. This may also be
+                achieved by appending `\c' to the end of the string, as is done by
+                iBCS2 compatible systems. Note that this option as well as the
+                effect of `\c' are implementation-defined in IEEE Std 1003.1-2001
+                (``POSIX.1'') as amended by Cor. 1-2002. Applications aiming for
+                maximum portability are strongly encouraged to use printf(1) to
+                suppress the newline character.</p>
+            <p class="highlight">:</p>
+        </div>
+    </div>
+    <p>
+        <a href="#listing-1_3">リスト1.3</a>の最後の行には<span class="mainTC__code mainTC__code--emphasized">:</span>があり、まだ下に情報があることを指し示している。この最後の行の詳細はシステムによって異なるが、矢印下キーを押すかスペースキーを押すことで一行ずつ次の情報を見ることができるだろう。
+        manページを出るには、”q”（”quit”の意）のキーを押す。（このmanページの画面構成は章3.3で学ぶ<span class="mainTC__code mainTC__code--emphasized">less</span>プログラムと同じ構成になっている。）
+    </p>
+    {% include component/figure.html num=10 %}
+    <p>
+        <span class="mainTC__code mainTC__code--emphasized">man</span>自身もコマンドのため、<span class="mainTC__code mainTC__code--emphasized">man</span>に<span class="mainTC__code mainTC__code--emphasized">man</span>を適用することができる（<a href="#figure-1_10">図1.10</a>）。その結果は<a href="#listing-1_4">リスト1.4</a>の通りである。
+    </p>
+    <div id="listing-1_4" class="mainTC__code mainTC__code--block u-mtbm">
+        <p class="mainTC__code--dark-bg mainTC__code--title">リスト1.4: <span class="mainTC__code--emphasized">man man</span>を実行したときの結果</p>
+        <p><span class="mainTC__code--prompt">$</span> <span class="command">man</span> man</p>
+        <div class="mainTC__code--emphasized">
+            <p>man(1)                                 man(1)</p>
+            <br>
+            <p>NAME</p>
+            <p>    man - format and display the on-line manual pages</p>
+            <br>
+            <p>SYNOPSIS</p>
+            <p>       man [-acdfFhkKtwW] [--path] [-m system] [-p string] [-C config_file]
+                [-M pathlist] [-P pager] [-B browser] [-H htmlpager] [-S section_list]
+                [section] name ...</p>
+            <br>
+            <p>DESCRIPTION</p>
+            <p>   man formats and displays the on-line manual pages. If you specify sec-
+                tion, man only looks in that section of the manual. name is normally
+                the name of the manual page, which is typically the name of a command,
+                function, or file. However, if name contains a slash (/) then man
+                interprets it as a file specification, so that you can do man ./foo.5
+                or even man /cd/foo/bar.1.gz.</p>
+            <br>
+            <p>   See below for a description of where man looks for the manual page
+                files.</p>
+            <br>
+            <p>OPTIONS</p>
+            <p>    -C config_file</p>
+            <p>:</p>
+        </div>
+    </div>
+    <p>
+        <a href="#listing-1_4">リスト1.4</a>から、<span class="mainTC__code mainTC__code--emphasized">man</span>の概要はこのようになっている。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p>man [-acdfFhkKtwW] [--path] [-m system] [-p string] ...</p>
+    </div>
+    <p>
+        これが”時に不可解”、と最初にmanページについて説明したときの意味である。確かに、多くの場合においてmanページの詳細はほとんど理解不能だと私は感じるが、あるコマンドラインの高レベルな概要を得るためにmanページを読めることは有益なスキルであり、取得する価値のあるスキルである。
+    </p>
+    <p>
+        manページを読むのに慣れるために、新しいコマンドに出会った時に<span class="mainTC__code mainTC__code--emphasized">man &ltcommand name&gt</span>と実行することを勧める。仮に詳細が全て明白ではないとしても、manページを読むことは技術的素養の価値あるスキルを養う手助けとなる（<a href="#aside-technical-sophistication">Box1.5</a>）。
+    </p>
+    <div id="aside-technical-sophistication" class="mainTC__box u-mtbm">
+        <h1 class="mainTC__box--title">Box1.5. 技術的素養</h1>
+        <p>
+            数学では、多くの科目が、純粋な推論を少数の仮定や原理に適用することで作られている。例えば代数学、幾何学、数論、解析。結果として、それらの科目は完全に自己完結しており、したがって正式な前提条件ない。
+        </p>        
+        <p>
+            なので原則として、小さな子供でさえ学ぶことができる。だが、はたまた原則として、他の何かを必要としており、数学者はたびたび数学に関する成熟度を非正式的な前提知識として必要であると言っている。この数学に関する成熟度とは、数学の証明を理解したり書いたりすることができるような経験や一般的な素養を培っていることを指している。
+        </p>
+        <p>
+            テクノロジー界では、似たようなスキル（もしくは、より正確に言えばスキルのセット）が技術的素養という形で存在している。テキストエディタやUnixコマンドラインなどでよく知られている”ハードスキル”に加えて、技術的素養はどこに目的のメニューアイテムがあるか探せたり、Googleを使ってどう調べたいことを検索するかを知っていたりといった”ソフトスキル”を含んでおり（"<a href="https://m.xkcd.com/627/">テックサポートチートシート</a>"として<a href="https://xkcd.com/">sked</a>でイラストされている）、どのように機械に命令をさせるかという姿勢とともに存在している（<a href="/course/learnenough/command-line-1_0#aside-computer_magic">Box1.1</a>）。
+        </p>
+        <p>
+            それらのソフトスキル、そして姿勢は直接教えるのが難しいため、このチュートリアルとその後に続く<a href="https://www.learnenough.com/">Learn Enoughチュートリアル</a>をやっていく中で技術的素養を鍛える機会を常に探し続ける必要がある。（例えばmanページを使うことでプログラムの要点を知る方法を学ぶなど。(章1.4)）やがて、その探究量が累積し、”<a href="https://m.xkcd.com/627/">テックサポートチートシート</a>”の著者のような、全てのプログラムにおいてなんでもできるような、外見上魔法のような能力を得ることができるだろう。
+        </p>
+        <p>
+            ところで、”<a href="https://m.xkcd.com/627/">テックサポートチートシート</a>”は一般的な問題を解決するのに大切な三つの技術が抜けている。
+        </p>
+        <p>
+            1. アプリケーションをリスタートしたか。
+        </p>
+        <p>
+            2. デバイスを再起動したか。
+        </p>
+        <p>
+            3. アプリをアンインストールしてインストールしなおしたか。
+        </p>
+        <p>
+            これらのステップは通常試すべき順序を示しており、二つめだけでおそらく90%の予期せぬコンピュータのエラーを解決することができるだろう。
+        </p>
+    </div>
+    <h1 class="sub-title"><span class="italic">1.4.1 演習</span></h1>
+    <p>
+        1. Manページを参考にし、あなたのシステムにおける`echo`の正式な説明について、短い説明と長い説明それぞれ調べなさい。
+    </p>
+    <p>
+        2. <a href="/course/learnenough/command-line-1_3#listing-1_2">リスト1.2</a>で見た通り、標準の<span class="mainTC__code mainTC__code--emphasized">echo</span>コマンドは引数をスクリーンに出力し、新しいプロンプトを新しい行に追加する。これは”<a href="https://en.wikipedia.org/wiki/Newline">ニューライン(newline)</a>（文字通り新しい行に文字を追加する。多くの状況で”バックスラッシュ n”<span class="mainTC__code mainTC__code--emphasized">\n</span>と書かれる。）”と呼ばれる特殊な文字によるものである。`echo`は、新しい行によって分けられない一連の文字列を出力するためのプログラムでたびたび使われるので、ニューラインによって新しい行が挿入されるのを防ぐ特別なコマンドラインオプションがある。
+    </p>
+    <p>
+        <span class="mainTC__code mainTC__code--emphasized">echo</span>のmanページを読むことで新しい行に行かずに”hello”と出力するコマンドを突き止め、予想通りに動くかターミナルで確かめなさい。
+    </p>
+    <p>
+        ヒント: コマンドラインのオプションの場所を突き止めるには、<a href="/course/learnenough/command-line-1_2#figure-1_5">図1.5</a>を参照するといいかもしれない。<a href="#ming-1_5">リスト1.5</a>、<a href="#listing-1_6">リスト1.6</a>と実行した結果を見比べ、正しくオプションを使えたことを確認できるだろう。
+        (Note: この演習はmacOSの古いバージョンで標準ターミナルを使っていると失敗するかもしれない。この場合、<a href="https://www.iterm2.com/">iTerm</a>をインストール（とにかく悪い選択肢ではない。)することをお勧めする。)
+    </p>
+    <div id="listing-1_5" class="mainTC__code mainTC__code--block u-mtbm">
+        <p class="mainTC__code--dark-bg mainTC__code--title">リスト1.5: <span class="mainTC__code--emphasized">echo</span>をニューライン（オプションなし）と一緒に実行した結果</p>
+        <p>hello</p>
+        <p>[~]$</p>
+    </div>
+    <div id="listing-1_6" class="mainTC__code mainTC__code--block u-mtbm">
+        <p class="mainTC__code--dark-bg mainTC__code--title">リスト1.6: <span class="mainTC__code--emphasized">echo</span>をニューライン（オプションあり）なしで実行した結果</p>
+        <p>hello[~]$</p>
+    </div>
+</div>

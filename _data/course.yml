@@ -1,0 +1,6 @@
+- name: Learn Enough
+  content: "コマンドラインからテキストエディタ、Gitという初歩的な技術的から始まり、Rubyや
+    Javascript、Ruby on Railsという応用的な部分までのWebアプリケーションの基礎を
+    網羅した、プログラミングチュートリアルの決定版。"
+  image: "/assets/images/course/learnenough.png"
+  url: "/course/learnenough"

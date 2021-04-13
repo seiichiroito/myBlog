@@ -1,0 +1,24 @@
+.course {
+    .wrap {
+        flex-direction: column;
+    }
+    &__contents {
+        margin-top: 30px;
+        padding: 0 90px;
+        &--outer {
+            padding: 10px 0;
+        }
+        &--outer ~ &--outer {
+            border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
+        }
+    }
+}
+
+
+@media (max-width: 48em) {
+    .course {
+        &__contents {
+            padding: 0;
+        }
+    }
+}

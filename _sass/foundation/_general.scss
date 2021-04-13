@@ -1,0 +1,24 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+.page {
+  flex: 1 1 auto;
+  background-color: $bc-main;
+}
+.wrap {
+  display: flex;
+  max-width: 860px;
+  margin: 0 auto;
+  height: inherit;
+}
+
+.container-lr { /* Padding: Left and Right; */
+  padding: 0 20px;
+}
+
+.container-tb { /* Padding: Top and Bottom; */
+  padding: 20px 0;
+}

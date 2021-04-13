@@ -1,0 +1,29 @@
+.c-nav-links {
+    &__item {
+        display: inline-block;
+        &+& {
+            margin-left: 30px;
+        }
+        a{
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            padding: 5px;
+            &:hover {
+                color: $hc-link;
+            }
+        }
+    }
+}
+
+.c-nav-link {
+    text-decoration: underline;
+    text-decoration-color: rgba(98, 123, 124, 0.3);;
+    text-decoration-thickness: 0.13em;
+    color: #627b7c;
+    &:hover,
+    &:active {
+      text-decoration-color: #405152;
+      color: #405152;
+    }
+}

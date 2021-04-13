@@ -1,0 +1,18 @@
+---
+layout: default
+title: Blog
+description: "Tech ブログ"
+---
+
+<div class="blog container-tb">
+    <div class="wrap container-lr">
+        {% include component/breadcrumbs.html %}
+        <div class="blog__contents">
+            {% for post in site.posts %}
+            <div class="blog__contents--outer">
+                {% include component/post-display.html %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

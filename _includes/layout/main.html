@@ -1,0 +1,15 @@
+<div class="main container-tb">
+    <div class="wrap container-lr">
+        <section class="page-section">
+            <h2 class="main--title">ブログ</h2>
+            <p class="main--sub-title">最新</p>
+            <div class="main__contents">
+            {% for post in site.posts limit: 6 %}
+                <div class="main__contents--outer">
+                    {% include component/post-display.html %}
+                </div>
+            {% endfor %}
+            </div>
+        </section>
+    </div>
+</div>

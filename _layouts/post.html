@@ -1,0 +1,24 @@
+---
+layout: default
+
+---
+
+<div class="post container-tb">
+  <div class="wrap container-lr">
+    {% include component/breadcrumbs.html %}
+    <div class="post__main">
+      <div class="post__hero" style="background-image: url({{ page.heroImage }});"></div>
+      <div class="post__header">
+        <h1 class="post__header--title">{{ page.title }}</h1>
+        <p class="post__header--date"> {{ page.date | date: '%B, %d, %Y' }}</p>
+      </div>
+      <div class="post__content">
+        {{ content }}
+      </div>
+      {% if page.comments %}
+      {% include component/disqus.html %}
+      {% endif %}
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//seiichiroito.disqus.com/count.js" async></script>
+</div>

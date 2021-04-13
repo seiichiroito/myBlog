@@ -1,0 +1,128 @@
+---
+layout: tutorial
+category: commandline
+title: "2.3 まとめ"
+section: "章 2"
+origin: "https://www.learnenough.com/command-line-tutorial/manipulating_files/summary_manipulating#sec-summary_manipulating"
+---
+
+<div class="mainTC">
+    <p>
+        この章における大事なコマンドを<a href="#table-2_1">テーブル2.1</a>にまとめた。
+    </p>
+    <div class="table--outer">
+        <table id="table-2_1" class="table">
+            <tr class="table__header">
+                <th>コマンド</th>
+                <th>説明</th>
+                <th>使用例</th>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">></span></td>
+                <td>ファイルに結果を転送</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ echo foo <span class="mainTC__code--space">></span> foo.txt</span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">>></span></td>
+                <td>ファイルに出力を追加</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ echo bar <span class="mainTC__code--space">>></span> foo.txt</span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">cat <span class="mainTC__code--space">&lt;file&gt;</span></span></td>
+                <td>スクリーンに中身を出力</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ cat <span class="mainTC__code--space">hello.txt</span></span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">diff <span class="mainTC__code--space">&lt;f1&gt;</span> &lt;f2&gt;</span></td>
+                <td>ファイル1、2の中身の比較</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ diff <span class="mainTC__code--space">foo.txt</span> bar.txt</span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">ls</span></td>
+                <td>ディレクトリ、ファイルをリスト表示</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ ls <span class="mainTC__code--space">hello.txt</span></span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">ls <span class="mainTC__code--space">-l</span></span></td>
+                <td>長い形式でリスト表示</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ ls <span class="mainTC__code--space">-l</span> hello.txt</span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">ls <span class="mainTC__code--space">-rtl</span></span></td>
+                <td>長い形式で編集時間の遅い順</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ ls <span class="mainTC__code--space">-rtl</span></span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">ls <span class="mainTC__code--space">-a</span></span></td>
+                <td>全てをリスト表示（隠しファイルを含む）</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ ls <span class="mainTC__code--space">-a</span></span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">touch <span class="mainTC__code--space">&lt;file&gt;</span></span></td>
+                <td>空のファイルを作成</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ touch <span class="mainTC__code--space">foo</span></span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">mv <span class="mainTC__code--space">&lt;old&gt;</span> &lt;new&gt;</span></td>
+                <td>古い名前から新しい名前に変更(移動)</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ mv <span class="mainTC__code--space">foo</span> bar</span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">cp <span class="mainTC__code--space">&lt;old&gt;</span> &lt;new&gt;</span></td>
+                <td>古いファイルを新しいファイルにコピー</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ cp <span class="mainTC__code--space">foo</span> bar</span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">rm <span class="mainTC__code--space">&lt;file&gt;</span></span></td>
+                <td>ファイルの削除</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ rm <span class="mainTC__code--space">foo</span></span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">rm <span class="mainTC__code--space">-f</span> &lt;file&gt;</span></td>
+                <td>ファイルを即座に削除</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ rm <span class="mainTC__code--space">-f</span> bar</span></td>
+            </tr>
+        </table>
+        <p class="table__footer">テーブル 2.1: 章2における重要なコマンド</p>
+    </div>
+    <h1 class="sub-title"><span class="italic">2.4.1 演習</span></h1>
+    <div id="figure-2_5" class="mainTC__box--quote">
+        <p class="u-mbm">
+            FRom faireſt creatures we deſire increaſe,<br>
+            That thereby beauties Roſe might neuer die,<br>
+            But as the riper ſhould by time deceaſe,<br>
+            His tender heire might beare his memory:<br>
+            But thou contracted to thine owne bright eyes,<br>
+            Feed’ſt thy lights flame with ſelfe ſubſtantiall fewell,<br>
+            Making a famine where aboundance lies,<br>
+            Thy ſelfe thy foe,to thy ſweet ſelfe too cruell:<br>
+            Thou that art now the worlds freſh ornament,<br>
+            And only herauld to the gaudy ſpring,<br>
+            Within thine owne bud burieſt thy content,<br>
+            And tender chorle makſt waſt in niggarding:<br>
+            Pitty the world,or elſe this glutton be,<br>
+            To eate the worlds due,by the graue and thee.<br>
+        </p>
+        <p class="figure">図2.5: シェイクスピアの一つ目のソネットのコピー＆ペーストしやすいバージョン（<a href="/course/learnenough/command-line-1_5#figure-1_11">図1.11</a>）</p>
+    </div>
+    <p>
+        1. <a href="#figure-2_5">図2.5</a>のHTMLバージョンからテキストをコピー＆ペーストし、<span class='mainTC__code mainTC__code--emphasized'>echo</span>を使うことでシェイクスピアの一つ目のソネットの全て（オリジナル） のテキストを含む<span class='mainTC__code mainTC__code--emphasized'>sonnet_1_complete.txt</span>というファイルを作りなさい。
+        ヒント：<span class='mainTC__code mainTC__code--emphasized'>echo</span>を使う時、<span class='mainTC__code mainTC__code--emphasized'>echo<span class="mainTC__code--space">"</span></span>のようにダブルクオートをセットで使わないと行き詰まることを思い出すかもしれないが（<a href="/course//learnenough/command-line-1_3">章1.3</a>や<a href="/course/learnenough/command-line-1_3#aside-getting-out-of-trouble">Box1.4</a>）、実はこれによって複数の行のテキストを入力することができようになる。
+        最後に閉じクオートを入れ、適切な名前のファイルにリダイレクトすることは覚えておくように。中身が正しいかは<span class='mainTC__code mainTC__code--emphasized'>cat</span>で確認できる。（<a href="/course/learnenough/command-line-2_1#figure-2_2">図2.2</a>）
+    </p>
+    <p>
+        2. <span class='mainTC__code mainTC__code--emphasized'>foo</span>という空のファイルを作成し、<span class='mainTC__code mainTC__code--emphasized'>bar</span>という名前のファイルに変更し、それを<span class='mainTC__code mainTC__code--emphasized'>baz</span>にコピーする一連のコマンドを入力しなさい。
+    </p>
+    <p>
+        3. "b" から始まるファイルだけリスト表示するコマンドはなんだろうか？ヒント：ワイルドカードを使う。
+    </p>
+    <p>
+        4. <span class='mainTC__code mainTC__code--emphasized'>rm</span>を一度だけ使って<span class='mainTC__code mainTC__code--emphasized'>bar</span>と<span class='mainTC__code mainTC__code--emphasized'>baz</span>の両方のファイルを削除しなさい。
+        ヒント：もし現在のディレクトリの中で"b"から始まるファイルがそれらしかない場合、前の演習のワイルドカードのバターンを使うことができる。
+    </p>
+    <h1 class="sub-title"><span class="italic">訳注</span></h1>
+    <p>
+        翻訳元で現在無料で公開されているものがここまでとなっていますので、翻訳版も一旦ここまでとさせていただきます。もし内容が役に立ったと思いましたら、是非シェアしてくださると嬉しいです。
+    </p>
+
+</div>

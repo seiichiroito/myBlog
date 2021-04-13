@@ -1,0 +1,127 @@
+---
+layout: tutorial
+category: texteditor
+title:  "テキストエディタへの入り口"
+section: "章 1"
+origin: "https://www.learnenough.com/text-editor-tutorial/vim#cha-vim"
+---
+
+<div class="mainTC">
+    <p>
+        <span class="italic">Learn Enough Text Editor to Be Dangerous</span>は<a href="/course/learnenough/command-line-1_0#aside-computer_magic">野心的なコンピュータマジシャン</a>のトリックのバックの中でおそらく一番重要なアイテムの使い方を勉強する手助けをするようにデザインされている。
+        それはテキストエディタである（<a href="#figure-1_1">図1.1</a>）。
+        テキストエディタの使い方を学習することは<a href="http://localhost:4000/course/learnenough/command-line-1_4#aside-technical-sophistication">技術的素養</a>の必要不可欠な要素である。
+    </p>
+    {% include component/figure.html num=1 %}
+    <p>
+        特定のエディタに特化している、他の典型的なテキストエディタのチュートリアルとは違い、このチュートリアルはアプリケーションのカテゴリー全体を紹介するようにデザインされている。ー 多くの人はそのカテゴリーを存在していることも知らない。
+        さらに、特定のエディタに特化したチュートリアルはプロの開発者を対象にしている傾向があるが、<span class="italic">Learn Enough Text Editor to Be Dangerous</span>は"テキストエディタ"とはなにかを知っているかどうかも想定していない。
+        事前知識としてUnixコマンドラインの基礎の理解があり、これは<a href="/course/learnenough/command-line-0-preface"><span class="italic">Learn Enough Command Line to Be Dangerous</span></a>などで学習できる。
+    </p>
+    <p>
+        <span class="italic">Learn Enough Text Editor to Be Dangerous</span>はソフトウェア開発（<a href="https://www.railstutorial.org/">Ruby on Railsチュートリアル</a>とともにウェブ開発を学習する事前知識に特に焦点を当てている。）の基礎を教えるようデザインされた<a href="https://www.learnenough.com/courses">チュートリアルシリーズ</a>の一部であるため、理想的には開発者と働くのに必要なスキルを学びたい人や開発者自体になりたい人に向いている。
+        最後に、もしテキストエディタの使い方を知っていてたとしても、このチュートリアルを進めることで（また演習を行うことで）、さまざまな知識を補完でき、新たなトリックを学ぶことができるだろう。
+    </p>
+    <p>
+        ワードプロセッサーやメールクライアントのようなドキュメントを書くのに使われる多くのプログラムとは違い、<span class="italic">テキストエディタ</span>は特に<span class="italic">プレーンテキスト</span>（単に短く"テキスト"とも呼ばれる）を編集するようにデザインされたアプリケーションである。
+        テキストエディタの使い方を学ぶことは重要である。なぜならテキストは現代のコンピューティングにおいて普遍的であるからだ。ーコードやマークアップ、構成ファイル、他にも多くのことに使われている。（実際に、このドキュメントを書くのにプレーンテキストを使っている。）
+    </p>
+    <p>
+        "プレーンテキスト"とは何か正確に定義するのはとてつもなく難しいが、実用的な観点ではいかなる書式を含んでいない、あるいは少なくともその書式が重要でないテキストのことを意味する。
+        <span class="italic">強調</span>や<span class="bold">太字</span>なテキストがなく、<span style="font-size: 0.6em;">フォントサイズ</span>や<span class="mainTC__code mainTC__code--emphasized">こんな書体</span>などがない、など。ー重要なのは<span class="italic">中身</span>だけである。
+        例えば、前の文章は<span class="italic">このような</span>書式化されたテキストを含んでいるが、その元自体はプレーンテキストであり、<a href="#listing-1_1">リスト1.1</a>で示すとおりである。
+    </p>
+    <div id="listing-1_1" class="mainTC__code mainTC__code--block u-mtbm">
+        <p class="mainTC__code--dark-bg mainTC__code--title">リスト1.1: このチュートリアルのある文章のHTMLソース</p>
+        &lt;em&gt;強調&lt;/em&gt;や&lt;strong&gt;太字&lt;strong&gt;なテキストがなく、&lt;small&gt;フォントサイズ&lt;/small&gt;や&lt;code&gt;こんな書体&lt;/code&gt;などがない、など。ー重要なのは&lt;em&gt;中身&lt;/em&gt;だけである。
+    </div>
+    <p>
+        <a href="#listing-1_1">リスト1.1</a>にて、必要な書式オプションは、テキスト自体の見た目を変えるのではなく<span class="italic">特別なタグ</span>（HTMLの強調タグ<span class="mainTC__code mainTC__code--emphasized">&lt;em&gt;...&lt;/em&gt;</span>のような）で示されている。
+        これがWordのような、より馴染みのあるワードプロセッサープログラムがプレーンテキストの編集に適していない主な理由であり、そのため異なる種類のツールが必要とされる。（<a href="#aside-word_processor">Box1.1</a>）
+    </p>
+    <div id="aside-word_processor" class="mainTC__box u-mtbm">
+        <h1 class="mainTC__box--title">Box.1.1. ワードプロセッサー vs テキストエディタ</h1>
+        <p>
+            テキストエディタを使ったことがなかったとしても、同様なツールであるワードプロセッサーを使ったことのある可能性は十分にある。
+            ワードプロセッサーとテキストエディタの特徴には多くの共通点がある。
+        </p>
+        <p>
+            例えば、両方ともドキュメントを作ることができ、検索、置き換え、テキストのカット/コピー/ペースト、結果の保存ができる。
+            一番の違いはワードプロセッサーは"見たものが得られるもの(What You See Is What You Get)"（WYSIWYG, "WIZ-ee-wig"と発音される）という原則に従ってドキュメント作成するように基本的にデザインされているため、<span class="italic">強調</span>や<span class="bold">太字</span>などの効果はアプリケーションで直接表現されており、<span class="mainTC__code--dark-bg">&lt;em&gt;強調&lt;/em&gt;</span>や<span class="mainTC__code--dark-bg">**boldface**</span>のようなプレーンテキストマークアップのようには表現されていない。
+            殆どの場合、ワードプロセッサーは結果を独自の形式で保存しており、時々うまくいかないことがある。（古いワードのファイルを開こうとした多くの人は悔しい思いをしただろう。）
+        </p>
+        <p>
+            対象的に、テキストエディタはプレーンテキストを編集するためにデザインされており、このテキストは最も普遍的で恒久的な書式である。
+            テキストエディタはより技術的なユーザーを対象とした機能を備えているという点でもワードプロセッサーとは異なる。例えば、ソースコードのためのシンタックスハイライトや自動インデント、正規表現、パッケージやスニペットを介したカスタム機能など。
+            したがって、優れたテキストエディタは、すべての技術者のツールキットの中で不可欠なツールとなる。
+        </p>
+    </div>
+    {% include component/figure.html num=2 %}
+    <p>
+        <a href="/course/learnenough/command-line-0-preface">Learn Enough Command Line to Be Dangerous</a>で使用された道具に基づいて、<span class="italic">Learn Enough Text Editor to Be Dangerous</span>はVimエディター（<a href="/course/learnenough/text-editor-1_1">章1.1</a>）という、ターミナルウィンドウの中のコマンドラインで直接動かすことのできる重要なエディターをカバーするところから始める。
+        Vimはテキストエディタの最も大事な機能の最初の例を見る機会を与えてくれるが、Vimは初心者にとって驚異的に複雑になりうるので、このチュートリアルでは基礎的な編集を可能にする最低限の知識のみカバーする。
+    </p>
+    <p>
+        チュートリアルのの残りの部分では<a href="/course/learnenough/text-editor-1_0">章1</a>で展開されたテーマを、オープンソースのクロスプラットフォームなテキストエディターである<a href="https://atom.io/">Atom</a>を主に例に使って、プログラマーが普段使いするテキストエディターに必要とされる多くの強力な機能のいくつかを説明することで発展させていく。
+        これらの知識は<a href="https://www.sublimetext.com/">Sublime Text</a>や<a href="https://code.visualstudio.com/">Visual Studio Code</a>、cloud <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a>である<a href="https://aws.amazon.com/cloud9/">Cloud9</a>などの同じようなエディターに適用することが可能である。
+    </p>
+    <p>
+        <a href="/course/learnenough/command-line-0-preface">Learn Enough Command Line to Be Dangerous</a>と同様に、このチュートリアルは<span class="italic">Unixの伝統</span>の一部であり、UnixとはMicrosoft Windowsを除いた、あなたが今まで聞いたことのあるオペレーションシステム（macOS、iOS, Android, Linuxなど）すべてを含んでいる。
+        これから論じるエディターはすべてWindowsでも動かすことができるが、UnixではないOSを使っていると途中で支障をきたす可能性があるので、Windowsを使っている人は仮想マシーンをインストールすることでLinuxが利用可能な開発環境を用意するか（<a href="#aside-virtual_machine">Box1.2</a>）、<a href="https://www.learnenough.com/dev-environment-tutorial">Learn Enough Dev Enviroment to Be Dangerous</a>内の<a href="https://www.learnenough.com/dev-environment-tutorial#sec-windows">Windowsのステップ</a>を踏むことを勧める。
+        別の選択肢としてcloud IDEを利用することが挙げられ、コマンドラインとテキストエディタを内蔵している。この選択肢についても<a href="https://www.learnenough.com/dev-environment-tutorial">Learn Enough Dev Enviroment to Be Dangerous</a>にて<a href="https://www.learnenough.com/dev-environment-tutorial#sec-cloud_ide">カバー</a>されている。
+    </p>
+    <div id="aside-virtual_machine" class="mainTC__box u-mtbm">
+        <h1 class="mainTC__box--title">Box.1.2. 仮想マシーンを動かす</h1>
+        <p>
+            Windowsユーザーの一つの選択肢はWindowsでLinuxのオペレーションシステムを使えるようになる仮想マシン(VM)を動かす無料のプログラムをインストールすることである。Windowsはここ数年、Linuxのサポートを改善させてきたので、仮想マシンを動かすために、<a href="https://www.learnenough.com/dev-environment-tutorial">Learn Enough Dev Environment to Be Dangerous</a>の<a href="https://www.learnenough.com/dev-environment-tutorial#sec-windows">Windowsユーザー向けの手順</a>をまず初めに試すことをお勧めする。
+        </p>
+        <p>
+            仮想マシンをインストールする手順は以下のとおりである。
+        </p>
+        <p>
+            1. pcのシステムにあった正しい<a href="https://www.virtualbox.org/">VirtualBox</a>をインストールする(無料)
+        </p>
+        <p>
+            2. 「<a href="https://softcover-static.s3.amazonaws.com/LearnEnough-v.1.4.ova">Learn Enough Virtual Machine</a>」をダウンロードする
+        </p>
+        <p>
+            3. ダウンロードが完了したら、”OVA”ファイルをダブルクリックし、仮想マシン（VS）を表示されている手順に沿い、インストールする。
+        </p>
+        <p>
+            4. 仮想マシンをダブルクリックし、デフォルトのユーザーパスワード、”<span class="mainTC__code--dark-bg">foobar!</span>”でログインする。
+        </p>
+        <p>
+            結果としてこのチュートリアル用に事前設定されたLinuxデスクトップ環境（コマンドラインターミナルとテキストエディタを含む）が利用できるようになっているだろう。（<a href="#figure-1_3">図1.3</a>）
+        </p>
+    </div>
+    {% include component/figure.html num=3 %}
+
+    <p>
+        <span class="italic">Learn Enough Text Editor to Be Dangerous</span>にて焦点を当てることは一般的な原則に則っているので、最終的にどのようなエディタを使うことになろうが、エディターがどのようなタスクを実行できるのかの優れたチェックリストを得ることができる。
+        加えて、特定のテキストエディタやシステムによって詳細は異なるため、このチュートリアルでは技術的素養を鍛える機会を提供している。（<a href="#aside-technical_sophistication">Box1.3</a>）
+    </p>
+    <p>
+        最後に。すべてのことを一度にマスターしなければならないと感じる必要はない。このチュートリアルに含まれる一部分でも自分の生産性を高めることが可能である。
+        技術的素養を身につけた人は実際毎日テキストエディタを利用しているため、持続的に新しい技術を学び続けるだろう。
+    </p>
+    <div id="aside-technical_sophistication" class="mainTC__box u-mtbm">
+        <h1 class="mainTC__box--title">Box.1.3. 技術的素養</h1>
+        <p>
+            <span class="italic">技術的素養</span>という言葉は<a href="/course/learnenough/command-line-1_4">Learn Enough Command Line to Be Dangerous</a>にて一度<a href="/course/learnenough/command-line-1_4/#Box1.5">述べられている</a>通り、コンピュータや他の技術的なことを使うことのできる普遍的な能力のことを指している。
+            これはすでに持っている知識（テキストエディタやUnixコマンドラインへの親しみ度）と<a href="https://xkcd.com/">xkcd</a>の<a href="https://m.xkcd.com/627/">テックサポートチートシート</a>にて描かれているような新しい知識を取得する能力を含んでいる。
+            コーディングやバージョン管理のような"ハードスキル"と呼ばれるものではく、技術的素養というのは"ソフトスキル"と呼ばれ、直接教えるのは難しいが、コンピュータプログラマーと働きたい場合やプログラマー自身になりたい場合は必要不可欠である。
+        </p>
+        <p>
+            テキストエディタにおいて、技術的素養とはメニューアイテムを読むことでそれらが何をするのか理解したり、ヘルプメニューを使って新しいコマンドを発見したり、メニューアイテムを読んだりググることでキーボードショートカットを学ぶことなどを指し示す。
+            また曖昧な表現に寛容的であることも含む。技術的素養を備えた読者はチュートリアルでなにかしらUndo（訳注:一つ前の状態に戻すこと）をするために⌘Zを使うように言ったときに、システム上で実際は^Zを示していたとしてもパニックにはならない。
+            彼らはまた、⌘の意味が分からなくても⌘Zを見たときにパニックにならない。なぜなら<a href="https://www.learnenough.com/text-editor-tutorial/modern_text_editors#table-keyboard_symbols">テーブル2.1</a>のようなものをざっと読んだり、単に<a href="https://www.google.com/search?q=mac+special+keys">ググる</a>ことで見つけられることを知っているからだ。
+            おそらく技術的素養の最も大事な側面は<span class="italic">姿勢</span>ー修める価値のある混乱に立ち向かう自信と"できる"という精神である。
+        </p>
+        <p>
+            <span class="italic">Learn Enough Text Editor to Be Dangerous</span>の残りを通して、なにか解決するのに技術的素養が必要な問題の例に出会うたびにこのBoxを参照する。
+            経験を通して、<a href="https://m.xkcd.com/627/">テックサポートチートシート</a>にあるような、技術的なことを解決できる<a href="https://www.learnenough.com/r/learn_enough_command_line/basics#aside-computer_magic">魔法的な</a>能力を持つ"コンピュータ人間"になることができるだろう。
+            （警告:あなたには新しいTシャツが必要かもしれない。（<a href="#figure-1_4">図1.4</a>））
+        </p>
+    </div>
+    {% include component/figure.html num=4 %}
+</div>

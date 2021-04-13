@@ -1,0 +1,114 @@
+---
+layout: tutorial
+category: commandline
+title: "1.5 行の編集"
+section: "章 1"
+origin: "https://www.learnenough.com/command-line-tutorial/basics#sec-editing_the_line"
+---
+<div class="mainTC">
+    <p>
+        コマンドラインには、前のコマンドを繰り返し使いやすくするための機能がいくつか備わっている。
+        これらやそれ以外の多くのコマンドラインの機能はキーボードにおいて特別なキーが関与していることが多い。
+    </p>
+    <p>
+        そのため参考として<a href="#table-1_1">テーブル1.1</a>にて典型的なMacintoshキーボードにおけるそれぞれのキーに対応するそれらのシンボルを示している。
+        もしあなたのキーボードと異なっていても、技術的素養を駆使すること。(<a href="/course/learnenough/command-line-1_4#aside-technical-sophistication">Box1.5</a>)
+    </p>
+    <div class="table--outer">
+        <table id="table-1_1" class="table">
+            <tr class="table__header">
+                <th>キー</th>
+                <th>シンボル</th>
+            </tr>
+            <tr class="table__content">
+                <td>コマンド(Command)</td>
+                <td>⌘</td>
+            </tr>
+            <tr class="table__content">
+                <td>コントロール(Control)</td>
+                <td>~</td>
+            </tr>
+            <tr class="table__content">
+                <td>シフト(Shift)</td>
+                <td>⇧</td>
+            </tr>
+            <tr class="table__content">
+                <td>オプション(Option)</td>
+                <td>⌥</td>
+            </tr>
+            <tr class="table__content">
+                <td>上、下、左、右(Up, down, left, right)</td>
+                <td>↑ ↓ ← →</td>
+            </tr>
+            <tr class="table__content">
+                <td>エンター/リターン(Enter/Return)</td>
+                <td>↵</td>
+            </tr>
+            <tr class="table__content">
+                <td>タブ(Tab)</td>
+                <td>⇥</td>
+            </tr>
+            <tr class="table__content">
+                <td>削除(Delete)</td>
+                <td>⌫</td>
+            </tr>
+        </table>
+        <p class="table__footer">テーブル 1.1: 雑多なキーボードのシンボル</p>
+    </div>
+    <p>
+        行を編集するのに最も便利な方法の一つとして"上矢印"↑があり、一つ前のコマンドを取得することができる。
+        上矢印をもう一度押すことでコマンドリストをより上に遡ることができ、"下矢印"↓で下に向かって戻ることができる。
+    </p>
+    <p>
+        他のよくある方法では、行を編集するためにコントロールキーを使い、それは（<a href="/course/learnenough/command-line-1_3#aside-getting-out-of-trouble">Box1.4</a>で見た通り）一般的に<span class="mainTC__code mainTC__code--emphasized">Ctrl</span>や<span class="mainTC__code mainTC__code--emphasized">^</span>と表記される。
+        例えば新しいコマンドを入力したり、以前のコマンドを扱ったりする時、行の中を素早く移動できると何かと便利である。
+        例えば下記のように入力したとする。
+    </p>
+    <div class="mainTC__code mainTC__code--block u-mtbm">
+        <p><span class="mainTC__code--prompt">$</span> goodbye</p>
+    </div>
+    <p>
+        そしてこれの前に<span class="mainTC__code mainTC__code--emphasized">echo</span>を入れたかったとしよう。
+        左矢印←を使うことで行の始めまで移動できるが、<span class="mainTC__code mainTC__code--emphasized">^A</span>を入力する方が簡単である。これですぐさま同じことができる。
+        似たものとして、<span class="mainTC__code mainTC__code--emphasized">^E</span>は行の終わりに移動できる。
+        最後に、<span class="mainTC__code mainTC__code--emphasized">^U</span>は行の始めまでを削除し、最初からやり直すことができる。
+    </p>
+    <p>
+        <span class="mainTC__code mainTC__code--emphasized">^A</span>、<span class="mainTC__code mainTC__code--emphasized">^E</span>、そして<span class="mainTC__code mainTC__code--emphasized">^U</span>の組み合わせはほとんどのシステム上で動くが、長い行を編集する時にはあまりいい働きをしない。
+        例えば<a href="http://www.shakespeares-sonnets.com/sonnet/1">ウィリアム•シェイクスピアの一つ目のソネット（14行詩）</a>の最初の行を含んでいる時である。(<a href="#listing-1_7">リスト1.7</a>)
+    </p>
+    <div id="listing-1_7" class="mainTC__code mainTC__code--block u-mtbm">
+        <p class="mainTC__code--dark-bg mainTC__code--title">リスト1.7: シェイクスピアの一つ目のソネットの最初の行を出力する</p>
+        <div class="mainTC__code--block">
+            <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">echo</span>"From fairest creatures we desire increase,"</p>
+        </div>
+    </div>
+    <p>
+        オリジナルの詩により近い表記にしたいため、"From"から"FRom"に変えたいとしよう。(<a href="#figure-1_11">図1.11</a>)
+        <span class="mainTC__code mainTC__code--emphasized">^A</span>の後に右矢印を数回入力することで移動できるが、いくつかのシステムではオプションキーとマウスの組み合わせで望んだ場所に直接移動することができる。
+        その方法とは、（もし存在していれば）キーボードのオプションキーを押しながら、カーソルを移動させたい場所にてマウスをクリックすることでできる。
+        この方法で"From"の"o"に移動できるので、"r"を消して<a href="#listing-1_8">リスト1.8</a>のように直接変更することができる。
+    </p>
+    {% include component/figure.html num=11 %}
+    <div id="listing-1_8" class="mainTC__code mainTC__code--block u-mtbm">
+        <p class="mainTC__code--dark-bg mainTC__code--title">リスト1.8: 長いコマンドラインのコマンドを編集した結果</p>
+        <div class="mainTC__code--block">
+            <p><span class="mainTC__code--prompt">$</span> <span class="mainTC__code--emphasized">echo</span>"FRom fairest creatures we desire increase,"</p>
+        </div>
+    </div>
+    <p>
+        私は普段<span class="mainTC__code mainTC__code--emphasized">^A</span>や<span class="mainTC__code mainTC__code--emphasized">^E</span>の組み合わせと右、左矢印でコマンドライン上を移動しているが、オプション+クリックも大きな助けとなるだろう。
+        （また入力しているコマンドを変えたいことがよくあるので、その場合は<span class="mainTC__code mainTC__code--emphasized">^U</span>を入力し、最初からやり直すのが一番早い方法だと感じる。）
+    </p>
+    <h1 class="sub-title"><span class="italic">1.5.1 演習</span></h1>
+    <p>
+        1. 上矢印を使って、<span class="mainTC__code mainTC__code--emphasized">echo</span>を入力し直さないで"fee", "fie", "foe","fum"とスクリーンに出力しなさい。
+    </p>
+    <p>
+        2. <a href="#listing-1_7">リスト1.7</a>からしていたようにオリジナルの表記(<a href="#figure-1_11">図1.11</a>)と合わせるために、<span class="mainTC__code mainTC__code--emphasized">^A</span>や<span class="mainTC__code mainTC__code--emphasized">^E</span>、矢印キー、
+        オプション+クリックを使って短いsをアルカイック文字の<a href="https://en.wikipedia.org/wiki/Long_s">長いs</a>“ſ”に変更しなさい。
+        そうすると、<span class="mainTC__code mainTC__code--emphasized">echo</span>の引数は“FRom faireſt creatures we deſire increaſe,”のようになるはずである。
+        ヒント: キーボードで “ſ”を入力できる可能性は低いので、このチュートリアルからコピーするか、<a href="https://www.google.com/search?q=unicode+long+s">ググって</a>ネットからコピーしてきて良い。
+        （もしターミナルにコピー&ペーストする際に何か問題があれば、<a href="/course/learnenough/command-line-1_4#aside-technical-sophistication">Box1.5</a>での考えを使ってあなたのシステムではどうすればできるのか見つけることをお勧めする。）
+    </p>
+</div>

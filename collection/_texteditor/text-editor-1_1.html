@@ -1,0 +1,92 @@
+---
+layout: tutorial
+category: texteditor
+title:  "最低限Vimを動かす"
+section: "章 1"
+origin: "https://www.learnenough.com/text-editor-tutorial/vim/mvv#sec-mvv"
+---
+
+<div class="mainTC">
+    <p>
+        vi（"vee-eye"と発音する）エディターはUnixの初期の時代までさかのぼり、Vim（"vim"と発音する）は"Vi IMproved(改善されたvi)"を表す、アップデートされたviである。
+        Vimはすべての必要な機能を備えた完全なテキストエディターであるので、多くの開発者が毎日コードを編集するのに使っているが、Vimをマスターする障壁は高く、すべてのポテンシャルを引き出すには相当なカスタマイズと技術的素養（<a href="/course//learnenough/text-editor-1_0.html#aside-technical_sophistication">Box1.3</a>）を必要とする。
+    </p>
+    <p>
+        Vimは多くの、時に不明瞭なコマンドラインのセットを含んでおり、ほとんど標準のキーバインド（キーボードショートカット）と一致していないので、これらによってVimの学習と記憶を挑戦的なものとしている。
+        結果として初心者には、毎日の使用に関しては"モダンな"エディター（章2）を学ぶことを勧めている。
+        それでも、私は最低限Vimについて知っていることは必要不可欠であると考えており、それは単にVimがどこにでも現れるからだ。
+        事実上、既存の宇宙におけるUnix仕様のシステム全てに存在し、世界のどこかのサーバーにランダムに<a href="https://en.wikipedia.org/wiki/Secure_Shell">ssh</a>接続しても、そこにVimは存在しているだろう。
+    </p>
+    <p>
+        この章では最低限のVim編集 ー 小さな構成ファイルやGitのcommitsを編集できるぐらいのVimの使い方を含んでいる。
+        これは<span class="italic">危険</span>な状態になるためでさえ十分ではない。（訳注: チュートリアルのタイトルでもある通り、筆者はあるスキルを扱える状態のことを"危険な状態"と表現している。）
+        しかし、最低限Vimをマスターするだけでもエリート企業に入ることができる。 ー なぜならVimはかなり難しいので、多少のVimの知識であなたの友達（あるいは仕事の面接相手）に感銘を与えることができるからだ。
+    </p>
+    <p>
+        Note: もしmacOSを使っている場合、このタイミングで<a href="#aside-switch_to_bash">Box1.4</a>の指示にしたがったほうがよい。
+    </p>
+    <div id="aside-switch_to_bash" class="mainTC__box u-mtbm">
+        <h1 class="mainTC__box--title">Box.1.4. macOSにてBashに変更する</h1>
+        <p>
+            もしmacOSを使っている場合、このタイミングでこのチュートリアルにあった正しいシェルプログラムを使っているかを確認した方がいい。
+            <a href="https://en.wikipedia.org/wiki/MacOS_Catalina">macOS Catalina</a>の標準シェルは<a href="https://en.wikipedia.org/wiki/Z_shell">Z shell</a>（Zsh）だが、このチュートリアルでの結果と一致させるためにシェルを<a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a>と呼ばれるシェルに変えることをお勧めする。
+        </p>
+        <p>
+            まず最初にすることとして、<a href="/course/learnenough/command-line-1_3"><span class="mainTC__code--dark-bg">echo</span>コマンド</a>を使って今どのシェルを実行しているかを確認することができる。
+        </p>
+
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span><span class="mainTC__code--space">echo</span>$SHELL</p>
+            <p>/bin/bash</p>
+        </div>
+        <p>
+            これで<span class="mainTC__code--dark-bg">$SHELL</span>という<a href="https://www.cyberciti.biz/faq/set-environment-variable-unix/">環境変数</a>を出力している。
+            上のような出力が出た場合、既にBashを使っているのでこのままチュートリアルを続けることができる。（珍しいケースとして、<span class="mainTC__code--dark-bg">$SHELL</span>が現在のシェルとは異なることがあるが、次の工程を踏むことで正しいシェルに変更することができる。）
+        </p>
+        <p>
+            <a href="/course/learnenough/command-line-1_2#listing-1_1">リスト1.1</a>で表示されたような警告は無視してもらっていい。Z shellへの変更、使用方法を含むより詳しい情報に関してはLearn Enoughブログの<a class="https://news.learnenough.com/macos-bash-zshell">"Macs上のZ Shellを使ってLearn Enoughチュートリアルを進める"</a>を参照。
+        </p>
+        <p>
+            <span class="mainTC__code--dark-bg">echo</span>の他の出力として以下の可能性がある。
+        </p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span><span class="mainTC__code--space">echo</span>$SHELL</p>
+            <p>/bin/zsh</p>
+        </div>
+        <p>
+            もしこのような出力が出たら、<span class="mainTC__code--dark-bg">chsh</span>（"change shell"の意）コマンドを以下のように実行すべきである。
+        </p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span><span class="mainTC__code--space">chsh</span> -s <span class="mainTC__code--space">/bin/bash</span></p>
+        </div>
+        <p>
+            この時、おそらくシステムがパスワードを入力するように促してくるはずなので、それに従うこと。
+            その後Command-Qでシェルプログラムを完全に終了し、改めて開けば良い。
+        </p>
+        <p>
+            正しく変更できたかどうかは<span class="mainTC__code--dark-bg">echo</span>を使って確かめることができる。
+        </p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p><span class="mainTC__code--prompt">$</span><span class="mainTC__code--space">echo</span>$SHELL</p>
+            <p>/bin/bash</p>
+        </div>
+        <p>
+            ここで、下記のような警告が出るかもしれないが、無視しても大丈夫である。
+        </p>
+        <div class="mainTC__code--dark-bg u-mtbm">
+            <p>The default interactive shell is now zsh.</p>
+            <p>To update your account to use zsh, please run `chsh -s /bin/zsh`.</p>
+            <p>For more details, please visit</p>
+            <p> https://support.apple.com/kb/HT208050.</p>
+            <br>
+            <p>[~]$</p>
+        </div>
+        <p>
+            ちなみに上記の手順は元に戻すこともできるので、システムの損傷を気にする必要はない。より詳しい情報については<a class="https://news.learnenough.com/macos-bash-zshell">"Macs上のZ Shellを使ってLearn Enoughチュートリアルを進める"</a>を参照。
+        </p>
+    </div>
+    <h1 class="sub-title"><span class="italic">訳注</span></h1>
+    <p>
+        これ以降は現在翻訳中(2020年12月20日現在)
+    </p>
+</div>

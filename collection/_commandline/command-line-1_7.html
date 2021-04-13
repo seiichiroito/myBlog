@@ -1,0 +1,79 @@
+---
+layout: tutorial
+category: commandline
+title: "1.7 まとめ"
+section: "章 1"
+origin: "https://www.learnenough.com/command-line-tutorial/basics#sec-summary_cleaning"
+---
+<div class="mainTC">
+    <p>
+        この章での大事なコマンドを<a href="#table-1_2">テーブル1.2</a>にてまとめてある。
+    </p>
+    <div class="table--outer">
+        <table id="table-1_2" class="table">
+            <tr class="table__header">
+                <th>コマンド</th>
+                <th>説明</th>
+                <th>使用例</th>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">echo &ltstring&gt</span></td>
+                <td>スクリーンに文字を出力する</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ echo hello</span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">man &ltcommand&gt</span></td>
+                <td>コマンドのマニュアルを表示する</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ man echo</span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">^C</span></td>
+                <td>トラブルから抜け出す</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ tail ^C</span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">^A</span></td>
+                <td>行の最初まで移動する</td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">^D</span></td>
+                <td>行の最後まで移動する</td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">^U</span></td>
+                <td>行の最初まで削除する</td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">オプション-クリック</span></td>
+                <td>クリックした場所にカーソルを移動させる</td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">上下矢印</span></td>
+                <td>コマンド履歴の参照</td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">clean</span>もしくは<span class="mainTC__code">^L</span></td>
+                <td>スクリーンを綺麗にする</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ clear</span></td>
+            </tr>
+            <tr class="table__content">
+                <td><span class="mainTC__code">exit</span>もしくは<span class="mainTC__code">^D</span></td>
+                <td>ターミナルから出る</td>
+                <td><span class="mainTC__code mainTC__code--emphasized-color">$ exit</span></td>
+            </tr>
+        </table>
+        <p class="table__footer">テーブル 1.2: 章1における重要なコマンド</p>
+    </div>
+    <h1 class="sub-title"><span class="italic">1.7.1 演習</span></h1>
+    <p>
+        1. クオテーションマークを含んだ<span class="mainTC__code mainTC__code--emphasized-color">Use "man echo"</span>と出力するコマンドを書きなさい。
+        <span class="mainTC__code mainTC__code--emphasized-color">Use man echo</span>と出力されないように気をつけること。
+        ヒント: 文字列の中ではダブルクオートを使い、その文字列をシングルクオートで囲えばよい。
+    </p>
+    <p>
+        2. <span class="mainTC__code mainTC__code--emphasized-color">man sleep</span>を実行し、ターミナルを5秒間寝させる(sleep)方法を見つけ、そのコマンドを実行しなさい。
+    </p>
+    <p>
+        3. 5000秒寝させるコマンドを実行し、その後それが1時間を超えることにあなたは気づいたので、<a href="/course/learnenough/command-line-1_3#aside-getting-out-of-trouble">Box1.4</a>での方法を使用しこの問題から抜け出しなさい。
+    </p>
+</div>
